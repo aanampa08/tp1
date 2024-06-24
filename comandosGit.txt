@@ -1,0 +1,58 @@
+git --version : para poder visualizar la version de git
+git help: muestra una lista de comandos
+
+CONFIGURACIONES  BASICAS
+git config --global user.name "<nombre>"
+git config --global user.email "<mail>"
+--> para visualizar los datos: git --global -e
+
+INICIO Y CREACION DE UN PROYECTO
+git init: inicializa el proyecto. Crea un repositorio local
+git status: muestra el estado de los archivos dentro del repositorio
+git commit -m "<mensaje>": deja un comentario en el historial del ultimo cambio del proyecto
+git checkout -- . : reconstruye todo antes del ultimo commit. Usado cuando se borra/modifica algun dato importante
+git log : permite ver los commits realizados (historial). se muestra de orden mas reciente al mas antiguo
+
+FORMAS DE AGREGAR ARCHIVOS AL STAGE
+git add . : agrega todos los archivos que van a estar pendientes a cambios
+git add *.extension : agrega todos los archivos de cierta extension dentro de un directorio
+git add nombre_carpeta/ : agrega todos los archivos de un carpeta
+
+(secuencia)
+-1 git add -A :agrega todos los archivos
+-2 git reset *.extension : excluimos el archivo que no queremos
+
+git add "*.extension": agrega todos los archivos de esa extension de TODO el proyecto
+git add --all : agrega todos los archivos
+
+FORMAS DE VER LOG O HISTORIAL DE COMMIT
+git log --oneline : aparece la informacion mas resumida
+git log --oneline --decorate --all --graph : aparece mejor ordenado y resumido
+git status -s : muestra archivos tanto modificados como subidos al stage
+git status -s -b : muestra la misma informacion y la rama donde se esta trabajando
+
+CREAR ALIAS PARA COMANDOS + USADOS
+git config --global alias.<nombre_alias> "<linea que queremos reemplazar>"
+(ejemplo: git config --global alias.lg "log --oneline --decorate --all --graph")
+
+DIFERENCIAS ENTRE COMMITS Y DIFERENCIACION DE ARCHIVOS
+git diff : indica los cambios que hubo en el archivo, en caso de haberlo modificado y NO subido al stage
+git diff --staged : nos permite ver el antes y despues de todos los archivos que se encuentran subidos al stage
+git reset HEAD <nombre_archivo>.<extension>: saca el archivo del stage
+
+ACTUALIZAR MENSAJE DEL COMMIT Y REVERTIR COMMITS
+git commit -am "<mensaje>" : permite agregar al stage y hacer el commit a la vez
+git commit  --amend -m "<mensaje>" : sirve para modificar mensaje del ultimo commit en caso de haber escrito mal
+git reset --soft HEAD^ : permite volver al ANTEULTIMO commit para poder terminar de agregar la info que se queria en un archivo y RECIEN incluirlo todo en un solo commit. (ejemplo: desarrollamos el "main" y realizamos commit, DESPUES lo volvemos a modificar pero queriamos que quede incluido en ESE anterior commit, luego de eso agregamos normal)
+
+VIAJES EN EL TIEMPO, RESETS Y REFLOG
+git reset --soft <id> : sirve para volver al punto en cuestion del proyecto, UNICAMENTE con ESE archivo. <id> --> codigo id que se guardo al momento de realizar el commit
+git reset --mixed <id> : para quitar modificaciones del stage desde cierto punto.(no borra, solo lo saca del stage)
+git reset --hard <id> : permite borrar cambios desde un punto del proyecto ya que al final NO sirven o bien recuperarlos
+git reflog : muestra los resets que se hicieron, sirve para "revertir" el "resert hard", ubicando el codigo al que queremos volver
+
+GIT + GITHUB
+git clone <url github> : para poder bajar el repositorio Github a nuestra pc local
+(buena practica, utilizar el comando antes de empezar a realizar cualquier cambio dentro del proyecto)git fetch : se actualizan todos los cambios realizados de forma remota 
+(buena practica para usar antes de empezar a realizar cualquier cambio nuevo)git pull : se unen todos los cambios realizados de forma local
+git push : para subir los cambios al repositorio en Github
