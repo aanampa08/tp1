@@ -1,10 +1,12 @@
 #Librerias
 from flask import Flask, request, jsonify
-from huellitasBA import db, Animal, Barrio, Sexo
+from flask_cors import CORS
 from flask_migrate import Migrate
+from huellitasBA import db, Animal, Barrio, Sexo
 
 #Conexion con flask + postgresql
 app = Flask(__name__)
+CORS(app)
 port = 5000
 #Configuracion para la base de datos: HuellitasBA
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://aliss:123456@localhost:5432/HuellitasBA'
