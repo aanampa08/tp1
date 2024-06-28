@@ -27,8 +27,10 @@ function obtenerAnimales(){
 // .then(parse_data)
 // .catch(request_error)
 
-const linkAnimales = document.getElementById("btnAdopcion");
-    linkAnimales.addEventListener("click",(e) => {
-        console.log("hola desde el listener");
+document.addEventListener('DOMContentLoaded', (event) => {
+    const btnAdopcion = document.getElementById("btnAdopcion");
+    btnAdopcion.addEventListener("click", (e) => {
+        window.location.href = "usuario/index.html";
 
+    });
 });

@@ -49,7 +49,9 @@ header nav ul li{
     display: flex;
     margin-left: 10px;
 }
-
+#btnAdopcion{
+    cursor: pointer;
+}
 .btn{
 
     font-size: 18px;
