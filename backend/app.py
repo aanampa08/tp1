@@ -13,8 +13,9 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://aliss:123456@localhost:543
 
 migrate = Migrate(app, db)
 
-@app.route('/animales')
-def obtenerAnimales():
+@app.route('/animales/<user>')
+def obtenerAnimales(user):
+    print(f"USUARIO AHORA SI: {user}")
     try:
         animales = Animal.query.all()
         animalesListado = []
