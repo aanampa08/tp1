@@ -88,6 +88,48 @@ header nav ul li{
     transform: scale(1.05);
 }
 
+/*TERMINA HEADER*/
+
+/*INICIA ADOPCION*/
+
+.sectionAdopciones {
+    background-color: #FFD580; /* Probar #FFABAB, #A8E6CF, #C3B1E1, #A8DADC */
+    padding: 20px;
+}
+
+.sectionAdopciones h1 {
+    color: black;
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+
+.sectionAdopciones ul {
+    text-transform: none;
+    padding-left: 20px; 
+}
+
+.sectionAdopciones ul li {
+    padding: 10px 2px 15px 0px;
+    text-align: justify;
+    color: black;
+    list-style-type: none; 
+    position: relative;
+    margin-bottom: 10px; 
+}
+
+.sectionAdopciones ul li i {
+    margin-right: 10px; 
+    color: black;
+}
+
+.sectionAdopciones img {
+    float: right;
+    margin: 0 0 20px 20px;
+    max-width: 50%;
+}
+
+/*TERMINA ADOPCION*/
+
 .sectionIntegrante{
    
     display: flex;
