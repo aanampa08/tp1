@@ -130,6 +130,55 @@ header nav ul li{
 
 /*TERMINA ADOPCION*/
 
+/*INICIA TESTIMONIOS*/
+
+.testimonios .slide{
+    text-align: center;
+  }
+  
+.testimonios .slide p{
+    font-size: 1.5rem;
+    color: #777;
+    position: relative;
+    background: #f0fdfa;
+    border:  0.1rem solid #0eb582;
+    margin-bottom: 3rem;
+    padding: 2rem;
+}
+  
+.testimonios .slide p::before{
+    content: '';
+    position: absolute;
+    bottom: -1.2rem; left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    background: #f0fdfa;
+    border-bottom: 0.1rem solid #0eb582;
+    border-right: 0.1rem solid #0eb582;
+    height: 2rem;
+    width: 2rem;
+  }
+  
+.testimonios .slide img{
+    height: 7rem;
+    width: 7rem;
+    border-radius: 50%;
+  }
+  
+  .testimonios .slide h3{
+    font-size: 2.2rem;
+    color: #444;
+    padding: .5rem 0;
+  }
+  
+  .testimonios .slide .stars{
+    font-size: 1.2rem;
+    color: #0eb582;
+  }
+
+/*TERMINA TESTIMONIOS*/
+
+
+/*INICIA INTEGRANTES*/
 .sectionIntegrante{
    
     display: flex;
@@ -192,6 +241,9 @@ header nav ul li{
     justify-content:space-evenly;
     align-items: center;
 }
+/*TERMINA INTEGRANTES*/
+
+/*INICIA FOOTER*/
 footer{
     padding: 20px;
     background-color: black;
