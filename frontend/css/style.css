@@ -1,72 +1,76 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-:root{
+
+:root {
     --colorPrincipal: white;
 }
 
-*{
-    padding: 0px;
-    margin: 0px;
+* {
+    padding: 0;
+    margin: 0;
     font-family: "Poppins", sans-serif;
-    color: var( --colorPrincipal);
+    color: var(--colorPrincipal);
     text-decoration: none;
     list-style: none;
     box-sizing: border-box;
 }
-h2{
+
+h2 {
     font-size: 30px;
 }
+
 /* header */
-.header{
+.header {
     background-image: linear-gradient(
-        rgba(0,0,0,0.7),
-        rgba(0,0,0,0.7)),url(https://i.postimg.cc/JhFLHHHb/fondo.png);
-    background-position:center center;
+        rgba(0, 0, 0, 0.7),
+        rgba(0, 0, 0, 0.7)
+    ), url(https://i.postimg.cc/JhFLHHHb/fondo.png);
+    background-position: center center;
     min-height: 70vh;
     display: flex;
     align-items: center;
 }
 
-header nav{
+header nav {
     display: flex;
-
     position: absolute;
-    top:0;
+    top: 0;
     left: 0;
     right: 0;
     align-items: center;
     justify-content: space-between;
 }
 
-header nav ul li{
+header nav ul li {
     position: relative;
     float: left;
 }
 
-.logo{
+.logo {
     width: 100px;
     height: 100px;
     display: flex;
     margin-left: 10px;
 }
-#btnAdopcion{
+
+#btnAdopcion {
     cursor: pointer;
 }
-.btn{
 
+.btn {
+    color: white;
     font-size: 18px;
     display: block;
     font-weight: 600;
     padding: 0.5em;
-    margin: 1em; 
-
+    margin: 1em;
 }
 
-.btn:hover{
-    box-shadow: inset 0 0 0 2000px rgba(0,0,0,0.3);
+.btn:hover {
+    box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.3);
     transition: 1s;
 }
-.contenidoHeader{
+
+.contenidoHeader {
     margin: auto auto;
     display: flex;
     flex-direction: column;
@@ -76,7 +80,8 @@ header nav ul li{
     font-size: larger;
 }
 
-#btnAdopcion{
+#btnAdopcion {
+    color: white;
     border-color: white;
     border-style: solid;
     border-radius: 1em;
@@ -84,13 +89,13 @@ header nav ul li{
     display: inline-block;
 }
 
-#btnAdopcion:hover{
+#btnAdopcion:hover {
     transform: scale(1.05);
 }
 
-/*TERMINA HEADER*/
+/* TERMINA HEADER */
 
-/*INICIA ADOPCION*/
+/* INICIA ADOPCION */
 
 .sectionAdopciones {
     background-color: #FFD580; /* Probar #FFABAB, #A8E6CF, #C3B1E1, #A8DADC */
@@ -105,20 +110,20 @@ header nav ul li{
 
 .sectionAdopciones ul {
     text-transform: none;
-    padding-left: 20px; 
+    padding-left: 20px;
 }
 
 .sectionAdopciones ul li {
     padding: 10px 2px 15px 0px;
     text-align: justify;
     color: black;
-    list-style-type: none; 
+    list-style-type: none;
     position: relative;
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
 }
 
 .sectionAdopciones ul li i {
-    margin-right: 10px; 
+    margin-right: 10px;
     color: black;
 }
 
@@ -128,74 +133,96 @@ header nav ul li{
     max-width: 50%;
 }
 
-/*TERMINA ADOPCION*/
+/* TERMINA ADOPCION */
 
-/*INICIA TESTIMONIOS*/
+/* INICIA TESTIMONIOS */
 
-.testimonios .slide{
+.seccionTestimonios {
+    background-color: pink;
+    color: brown;
+}
+
+.seccionTestimonios h1{
+    padding: 20px 20px;
+}
+
+.seccionTestimonios .swiper-wrapper{
+    padding: 0 10px;
+}
+
+.seccionTestimonios .swiper.testimonios-slider {
+    border: 1px solid pink;
+    padding: 20px 0;
+}
+
+.seccionTestimonios .slide {
     text-align: center;
-  }
-  
-.testimonios .slide p{
-    font-size: 1.5rem;
-    color: #777;
+}
+
+.seccionTestimonios .slide p {
+    font-size: 1rem;
+    color: brown;
     position: relative;
-    background: #f0fdfa;
-    border:  0.1rem solid #0eb582;
+    background: #ffd9f1;
+    border: 0.1rem solid brown;
     margin-bottom: 3rem;
     padding: 2rem;
 }
-  
-.testimonios .slide p::before{
+
+.seccionTestimonios .slide p::before {
     content: '';
     position: absolute;
-    bottom: -1.2rem; left: 50%;
+    bottom: -1.2rem;
+    left: 50%;
     transform: translateX(-50%) rotate(45deg);
-    background: #f0fdfa;
-    border-bottom: 0.1rem solid #0eb582;
-    border-right: 0.1rem solid #0eb582;
+    background: #ffd9f1;
+    border-bottom: 0.1rem solid brown;
+    border-right: 0.1rem solid brown;
     height: 2rem;
     width: 2rem;
-  }
-  
-.testimonios .slide img{
-    height: 7rem;
-    width: 7rem;
+}
+
+.seccionTestimonios .slide img {
+    height: 2rem;
+    width: 2rem;
     border-radius: 50%;
-  }
-  
-  .testimonios .slide h3{
+}
+
+.seccionTestimonios .slide h3 {
     font-size: 2.2rem;
-    color: #444;
-    padding: .5rem 0;
-  }
-  
-  .testimonios .slide .stars{
+    color:brown;
+    padding: 0.5rem 0;
+}
+
+.seccionTestimonios .slide .stars {
     font-size: 1.2rem;
-    color: #0eb582;
-  }
+}
 
-/*TERMINA TESTIMONIOS*/
+.seccionTestimonios .slide .stars i{
+    color: brown;
+}
 
+/* TERMINA TESTIMONIOS */
 
-/*INICIA INTEGRANTES*/
-.sectionIntegrante{
-   
+/* INICIA INTEGRANTES */
+
+.sectionIntegrante {
     display: flex;
     flex-direction: column;
     padding: 20px;
-
 }
-.integrantes{
+
+.integrantes {
     display: grid;
     gap: 50px;
     padding: 20px;
-    grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     margin: auto auto;
     width: 100%;
 }
-.integrante{
-    box-shadow: inset 0 0 0 2000px rgba(0,0,0,0.3);
+
+.integrante {
+    box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.3);
     display: flex;
     flex-direction: column;
     margin: auto auto;
@@ -204,47 +231,49 @@ header nav ul li{
     justify-content: center;
     align-items: center;
     transition: 1s;
-
 }
 
-.integrante:hover{
+.integrante:hover {
     transform: scale(1.05);
-    transition: 1s;
 }
-.integrante img{
 
+.integrante img {
     width: 250px;
     height: 200px;
 }
 
-.infoIntegrante{
+.infoIntegrante {
     padding-top: 10px;
 }
-.infoIntegrante h4{
+
+.infoIntegrante h4 {
     font-size: 20px;
     padding-bottom: 10px;
 }
-.infoIntegrante p{
-    padding-bottom:5px;
+
+.infoIntegrante p {
+    padding-bottom: 5px;
 }
 
-.infoIntegrante ul li i{
+.infoIntegrante ul li i {
     color: rgb(255, 255, 255);
     font-size: 30px;
     margin-top: 10px;
     cursor: pointer;
 }
 
-.socialIntegrantes{
+.socialIntegrantes {
     display: flex;
     margin: auto;
-    justify-content:space-evenly;
+    justify-content: space-evenly;
     align-items: center;
 }
-/*TERMINA INTEGRANTES*/
 
-/*INICIA FOOTER*/
-footer{
+/* TERMINA INTEGRANTES */
+
+/* INICIA FOOTER */
+
+footer {
     padding: 20px;
     background-color: black;
     display: flex;
@@ -253,25 +282,26 @@ footer{
     justify-content: center;
     text-align: center;
 }
-footer p{
+
+footer p {
     font-size: 20px;
 }
-footer a img{
+
+footer a img {
     width: 120px;
 }
 
-footer ul li{
+footer ul li {
     margin-bottom: 10px;
 }
 
-.redesPag{
+.redesPag {
     display: flex;
-    justify-content:center;
+    justify-content: center;
     align-items: center;
 }
 
-.redesPag li i{
-    
+.redesPag li i {
     margin-top: 10px;
     padding: 20px;
     font-size: 30px;
