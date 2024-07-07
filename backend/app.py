@@ -13,9 +13,55 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://aliss:123456@localhost:543
 
 migrate = Migrate(app, db)
 
-@app.route('/animales/<user>')
-def obtenerAnimales(user):
-    print(f"USUARIO AHORA SI: {user}")
+@app.route('/animal/<idAnimal>')
+def obtenerAnimal(idAnimal):
+    try:
+        animal=Animal.query.where(Animal.idAnimal == idAnimal).first()
+        barrio = Barrio.query.where(Barrio.idBarrio == animal.barrioID).first()
+        sexo = Sexo.query.where(Sexo.idSexo == animal.sexoID).first()
+        datosAnimal = {
+            'id': animal.idAnimal,
+            'Nombre': animal.Nombre,
+            'Edad': animal.Edad,
+            'Tipo': animal.tipoEdad,
+            'Sexo':sexo.Nombre,
+            'Descripcion': animal.Descripcion,
+            'Foto': animal.Foto,
+            'Contacto': animal.Contacto,
+            'Barrio':barrio.Nombre
+        }
+        return jsonify({'animal': datosAnimal})
+    except Exception as error:
+        return jsonify({'message': f'Internal Server Error: {error}'}), 500
+
+@app.route('/animales', methods=["POST"])
+def nuevoAnimal():
+    try:
+        animalNuevo= request.json
+        nombre = animalNuevo.get('nombre')
+        edad = animalNuevo.get('edad')
+        tipoEdad = animalNuevo.get('tipoEdad')
+        sexo = animalNuevo.get('sexo')
+        descripcion = animalNuevo.get('descripcion')
+        foto = animalNuevo.get('edad')
+        contacto = animalNuevo.get('contacto')
+        barrio = animalNuevo.get('barrio')
+
+        #consigo el id de sexo y barrio
+        infoBarrio = Barrio.query.where(Barrio.Nombre == barrio).first()
+        infoSexo = Sexo.query.where(Sexo.Nombre == sexo).first()
+
+
+        nuevo_animal = Animal(Nombre=nombre,Edad=edad,tipoEdad=tipoEdad,sexoID=infoSexo.idSexo,Descripcion=descripcion,Contacto=contacto,barrioID=infoBarrio.idBarrio)
+        db.session.add(nuevo_animal)
+        db.session.commit()
+        return jsonify({'animal':{nuevo_animal.Nombre}})
+    except Exception as error:
+        return jsonify({'message': f'Internal Server Error: {error}'}), 500
+
+
+@app.route('/animales')
+def obtenerAnimales():
     try:
         animales = Animal.query.all()
         animalesListado = []
