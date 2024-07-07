@@ -7,6 +7,7 @@ Consideraciones:
 --> pip install Flask-SQLAlchemy
 --> pip install flask_migrate
 --> pip install psycopg2-binary
+--> pip install flask-cors
 
 3. app.config debe estar configurado con los datos de quien lo este usando:
 --> Ejemplo: tiene mi nombre de usuario, mi contraseña
