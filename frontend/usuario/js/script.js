@@ -1,15 +1,8 @@
-document.addEventListener('DOMContentLoaded', (event) => {
-    const btnUser = document.getElementById("usuario");
-    btnUser.addEventListener("click",(e)=>{
-        //aca debemos linkear la pagina de los perritos solo para verlos
-        //con la oportunidad de un forms
-        btnUser.setAttribute("href","/animales?user=usuario");
-        
-    });
+// le damos la ruta correspondiente a los 'a' + un parametro
 
-    const btnAdmin = document.getElementById("admin");
-    btnAdmin.addEventListener("click",(e)=>{
-        //aca debemos linkear la pagina de los perritos con posibilidad de editar
-        btnAdmin.setAttribute("href","/animales?user=admin");
-    });
-});
+const aUsuario=document.getElementById("perfilUsuario");
+aUsuario.setAttribute("href","../animales/index.html?user=usuario");
+
+const aAdmin=document.getElementById("perfilAdmin");
+aAdmin.setAttribute("href","../animales/index.html?user=admin");
+

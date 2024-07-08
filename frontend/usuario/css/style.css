@@ -84,3 +84,7 @@ h2 {
     transform: scale(1.05);
     transition: 1s;
 }
+
+.perfil h4{
+    font-weight: 500;
+}
