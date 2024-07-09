@@ -9,7 +9,7 @@ app = Flask(__name__)
 CORS(app)
 port = 5000
 #Configuracion para la base de datos: HuellitasBA
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://aliss:123456@localhost:5432/HuellitasBA'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://vicksdb:1234@localhost:5432/HuellitasBA'
 
 migrate = Migrate(app, db)
 
@@ -31,6 +31,18 @@ def obtenerAnimal(idAnimal):
             'Barrio':barrio.Nombre
         }
         return jsonify({'animal': datosAnimal})
+    except Exception as error:
+        return jsonify({'message': f'Internal Server Error: {error}'}), 500
+    
+@app.route('/animal/<idAnimal>', methods = ["DELETE"])
+def eliminarAnimal(idAnimal):
+    try:
+        animal = Animal.query.get(idAnimal)
+
+        db.session.delete(animal)
+        db.session.commit()
+        
+        return jsonify({'message': f'Animal {idAnimal} eliminado correctamente'})
     except Exception as error:
         return jsonify({'message': f'Internal Server Error: {error}'}), 500
 
