@@ -95,6 +95,38 @@ header nav ul li {
 
 /* TERMINA HEADER */
 
+/* INICIA ACERCA */
+
+.seccionAcerca{
+    background-color: #4C1E1E;
+    padding: 20px;
+}
+
+.seccionAcerca h1 {
+    color: white;
+    font-size: 35px;
+    margin: 10px 20px;
+}
+
+.seccionAcerca h2{
+    margin: 10px 20px;
+}
+
+.seccionAcerca p {
+    text-transform: none;
+    margin-left: 40px;
+    text-align: justify;
+}
+
+
+.seccionAcerca img {
+    float: left;
+    margin: 0 0 20px 20px;
+
+}
+
+/* TERMINA ACERCA */
+
 /* INICIA ADOPCION */
 
 .sectionAdopciones {
