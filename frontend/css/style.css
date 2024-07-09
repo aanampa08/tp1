@@ -71,7 +71,7 @@ header nav ul li {
 }
 
 .contenidoHeader {
-    margin: auto auto;
+    margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -98,7 +98,7 @@ header nav ul li {
 /* INICIA ADOPCION */
 
 .sectionAdopciones {
-    background-color: #FFD580; /* Probar #FFABAB, #A8E6CF, #C3B1E1, #A8DADC */
+    background-color: #FFD580;
     padding: 20px;
 }
 
@@ -139,34 +139,48 @@ header nav ul li {
 
 .seccionTestimonios {
     background-color: pink;
-    color: brown;
+    color: black;
+    text-align: center;
+    padding: 5px;
+    overflow: hidden;
 }
 
-.seccionTestimonios h1{
-    padding: 20px 20px;
+.seccionTestimonios h1 {
+    margin-bottom: 20px;
 }
 
-.seccionTestimonios .swiper-wrapper{
-    padding: 0 10px;
+.seccionTestimonios .swiper-wrapper {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 .seccionTestimonios .swiper.testimonios-slider {
     border: 1px solid pink;
-    padding: 20px 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.seccionTestimonios .swiper-slide {
+    margin: 0;
+    box-sizing: border-box;
 }
 
 .seccionTestimonios .slide {
     text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .seccionTestimonios .slide p {
     font-size: 1rem;
-    color: brown;
+    color: black;
     position: relative;
     background: #ffd9f1;
     border: 0.1rem solid brown;
     margin-bottom: 3rem;
     padding: 2rem;
+    box-sizing: border-box;
 }
 
 .seccionTestimonios .slide p::before {
@@ -190,7 +204,7 @@ header nav ul li {
 
 .seccionTestimonios .slide h3 {
     font-size: 2.2rem;
-    color:brown;
+    color: black;
     padding: 0.5rem 0;
 }
 
@@ -198,7 +212,7 @@ header nav ul li {
     font-size: 1.2rem;
 }
 
-.seccionTestimonios .slide .stars i{
+.seccionTestimonios .slide .stars i {
     color: brown;
 }
 
@@ -221,8 +235,8 @@ header nav ul li {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     margin: auto;
     width: 100%;
-    max-width: 1200px; /* Ancho máximo para centrar el contenido */
-    justify-items: center; /* Centra las tarjetas dentro del grid */
+    max-width: 1200px; 
+    justify-items: center;
 }
 
 .integrante {
