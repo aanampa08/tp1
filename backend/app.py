@@ -46,6 +46,56 @@ def eliminarAnimal(idAnimal):
     except Exception as error:
         return jsonify({'message': f'Internal Server Error: {error}'}), 500
 
+@app.route('/animal/<idAnimal>', methods = ["PUT"])
+def editarAnimal(idAnimal):
+    try:
+        animal = Animal.query.get(idAnimal)
+        #Pido el json con los cambios
+        datosEditados = request.json
+
+        #Si se cambio el campo, se actualiza su valor (y sino permanece como estaba)
+        if 'nombre' in datosEditados:
+            animal.Nombre = datosEditados['nombre']
+        if 'edad' in datosEditados:
+            animal.Edad = datosEditados['edad']
+        if 'tipoEdad' in datosEditados:
+            animal.tipoEdad = datosEditados['tipoEdad']
+        if 'descripcion' in datosEditados:
+            animal.Descripcion = datosEditados['descripcion']
+        if 'foto' in datosEditados:
+            animal.Foto = datosEditados['foto']
+        if 'contacto' in datosEditados:
+            animal.Contacto = datosEditados['contacto']
+        
+        if 'barrio' in datosEditados:
+            nombreBarrio = datosEditados['barrio']
+            #busca el barrio en la tabla de barrios
+            infoBarrio = Barrio.query.filter_by(Nombre = nombreBarrio).first()
+            if not infoBarrio:
+                #Si no existe el barrio, lo crea en la tabla de barrios
+                nuevoBarrio = Barrio(Nombre=  nombreBarrio)
+                db.session.add(nuevoBarrio)
+                db.session.commit()
+
+                #Actualiza el animal con el ID del barrio nuevo
+                animal.barrioID = nuevoBarrio.idBarrio
+            else:
+                #Si el barrio existe, le pone su id al animal
+                animal.barrioID = infoBarrio.idBarrio
+
+        
+
+        if 'sexo' in datosEditados:
+            #busca el sexo en la tabla sexo y le pone su id al animal
+            infoSexo = Sexo.query.filter_by(Nombre = datosEditados['sexo']).first()
+            animal.sexoID = infoSexo.idSexo
+        
+        db.session.commit() 
+
+        return jsonify({'message': f'Animal {idAnimal} actualizado correctamente'})
+    except Exception as error:
+        return jsonify({'message': f'Internal Server Error: {error}'}), 500
+
 @app.route('/animales', methods=["POST"])
 def nuevoAnimal():
     try:
