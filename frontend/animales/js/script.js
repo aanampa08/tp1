@@ -10,8 +10,34 @@ function parse_data(animales){
     let contenidoAnimales=animales['animales'];
     let secAnimales= document.getElementById("sectionAnimales");
     let stylesheet = document.getElementById("idLink");
+    let h2= document.getElementById("titulo-user");
     if(user == "admin"){
         stylesheet.href="./css/styleAdmin.css";
+        h2.innerText="Administrador";
+        let divAgregar= document.createElement("div");
+        divAgregar.className="agregarAnimal";
+
+        //poner la ruta correcta para agregar 
+        let aAgregar= document.createElement("a");
+        aAgregar.href="./animalNuevo/index.html";
+        divAgregar.append(aAgregar);
+
+        let divPlus = document.createElement("div");
+        divPlus.className="plus";
+
+        aAgregar.append(divPlus);
+
+        let iconPlus = document.createElement("i");
+        iconPlus.className="fa-solid fa-plus";
+        iconPlus.style.color="white";
+
+        divPlus.append(iconPlus);
+
+        let pAgrega = document.createElement("p");
+        pAgrega.innerText="Añade una nueva huellita";
+        aAgregar.append(pAgrega);
+    
+        secAnimales.append(divAgregar);
     }
     for(let i=0; i < contenidoAnimales.length; i++){
         const animal=contenidoAnimales[i];
