@@ -9,9 +9,44 @@ app = Flask(__name__)
 CORS(app)
 port = 5000
 #Configuracion para la base de datos: HuellitasBA
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://vicksdb:1234@localhost:5432/HuellitasBA'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://aliss:123456@localhost:5432/HuellitasBA'
 
 migrate = Migrate(app, db)
+
+
+@app.route('/barrios')
+def obtenerBarrios():
+    try:
+        barrios = Barrio.query.all()
+        barriosListado = []
+        for barrio in barrios:
+            datoBarrio = {
+                'id': barrio.idBarrio,
+                'Nombre': barrio.Nombre
+            }
+            #Guardamos cada barrio en el listado
+            barriosListado.append(datoBarrio)
+        #Retornamos el json con los barrios cargados
+        return jsonify({'barrios': barriosListado})
+    except Exception as error:
+        return jsonify({'message': f'Internal Server Error: {error}'}), 500
+
+@app.route('/sexo')
+def obtenerGenero():
+    try:
+        sexos = Sexo.query.all()
+        sexosListado = []
+        for sexo in sexos:
+            datoSexo = {
+                'id': sexo.idSexo,
+                'Nombre': sexo.Nombre
+            }
+            #Guardamos cada barrio en el listado
+            sexosListado.append(datoSexo)
+        #Retornamos el json con los barrios cargados
+        return jsonify({'sexos': sexosListado})
+    except Exception as error:
+        return jsonify({'message': f'Internal Server Error: {error}'}), 500
 
 @app.route('/animal/<idAnimal>')
 def obtenerAnimal(idAnimal):
@@ -105,7 +140,7 @@ def nuevoAnimal():
         tipoEdad = animalNuevo.get('tipoEdad')
         sexo = animalNuevo.get('sexo')
         descripcion = animalNuevo.get('descripcion')
-        foto = animalNuevo.get('edad')
+        foto = animalNuevo.get('foto')
         contacto = animalNuevo.get('contacto')
         barrio = animalNuevo.get('barrio')
 
