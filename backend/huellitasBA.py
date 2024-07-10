@@ -22,7 +22,7 @@ class Animal(db.Model):
     Edad = db.Column(db.Integer,nullable=False)
     tipoEdad=db.Column(db.String(255),nullable=False)
     sexoID=db.Column(db.Integer,db.ForeignKey('Sexo.idSexo'),nullable=False)
-    Foto = db.Column(db.String(255),nullable=False)
+    Foto = db.Column(db.String(1000),nullable=False)
     Descripcion = db.Column(db.Text,nullable=False)
     Contacto = db.Column(db.String(255),nullable=False)
     barrioID=db.Column(db.Integer,db.ForeignKey('Barrio.idBarrio'),nullable=False)
