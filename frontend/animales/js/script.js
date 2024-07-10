@@ -61,6 +61,7 @@ function parse_data(animales){
             divElementos.className="elementos";
             
             let aEditar=document.createElement("a");
+            aEditar.setAttribute("href", `./animalEditar/index.html?idAnimal=${animal.id}`);
             let iEditar=document.createElement("i");
             iEditar.className="fa-solid fa-pen-to-square";
             iEditar.style.color="#3ed33c";
