@@ -232,8 +232,23 @@ function request_error(error){
 
 function borrar_animal(event,id){
     event.preventDefault();
-    alert(`Borrar: ${id}`);
-    //en esta parte se puede pedir el fetch
+
+    const confirmacion = confirm(`¿Está seguro de eliminar al animal con ID ${id}?`);
+    if (!confirmacion) {
+        return;
+    }
+
+    fetch(`http://localhost:5000/animal/${id}`, {
+        method: 'DELETE',
+    })
+    .then(response => response.json())
+    .then(data => {
+        window.location.href = "/animales/index.html?user=admin";
+   })
+   .catch(error => {
+       console.error(`Error al borrar el animal ${id}:`, error);
+       alert('Error al intentar eliminar el animal. Inténtalo de nuevo más tarde.');
+   });
 }
 
 const params=new URLSearchParams(window.location.search);
