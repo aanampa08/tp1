@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Huellitas BA</title>
+</head>
+
+<body>
+    <header>
+        <nav class="nav">
+            <a href="../../index.html"><img class="icon" src="https://i.postimg.cc/Ghrs21mK/icon-Huellitas.png" alt="Logo Huellitas"></a>
+            <ul>
+                <li><a id="aRedireccionar" href="../index.html?user=admin">Ver huellitas</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="nuevaHuella">
+        <h2>Editar huellita</h2>
+        <form id="FormEditarAnimal" onsubmit="return editar_animal();">
+            <div class="datosForm">
+                <input type="text" name="nombre" id="nombre" placeholder="Nombre de la huellita">
+                <div class="edad">
+                    <input type="number" id="edad" placeholder="Ingrese la edad">
+                    <select name="numEdad" id="tipoEdad">
+                        <option value="inicio">Seleccione el tipo de edad</option>
+                        <option value="Anios">Años</option>
+                        <option value="Meses">Meses</option>
+                        <option value="Dias">Días</option>
+
+                    </select>
+                </div>
+                <select name="sexo" id="sexos">
+                    <option value="--">Seleccione el sexo</option>
+                </select>
+                <select name="barrios" id="barrios">
+                    <option value="--">Seleccione el barrio</option>
+                </select>
+                <input type="text" name="url" id="foto" placeholder="Ingrese la url de una imagen. Ej: PostImage, Web">
+                <input type="text"id="contacto" placeholder="Ingrese algun contacto. Ej: Instagram">
+                <textarea name="descripcion" id="descripcion" rows="5" cols="50" placeholder="Descripcion de la huellita, curiosidades, requisitos para adoptarla"></textarea>
+                <button id="btnAgregar" type="button" onclick="editarAnimal()">Editar</button>
+            </div>
+        </form>
+    </section>
+    <div id="result"></div>
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
