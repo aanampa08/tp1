@@ -118,8 +118,6 @@ def editarAnimal(idAnimal):
                 #Si el barrio existe, le pone su id al animal
                 animal.barrioID = infoBarrio.idBarrio
 
-        
-
         if 'sexo' in datosEditados:
             #busca el sexo en la tabla sexo y le pone su id al animal
             infoSexo = Sexo.query.filter_by(Nombre = datosEditados['sexo']).first()
@@ -127,7 +125,22 @@ def editarAnimal(idAnimal):
         
         db.session.commit() 
 
-        return jsonify({'message': f'Animal {idAnimal} actualizado correctamente'})
+        barrio = Barrio.query.where(Barrio.idBarrio == animal.barrioID).first()
+        sexo = Sexo.query.where(Sexo.idSexo == animal.sexoID).first()
+
+        datosAnimal = {
+            'id': animal.idAnimal,
+            'Nombre': animal.Nombre,
+            'Edad': animal.Edad,
+            'Tipo': animal.tipoEdad,
+            'Sexo': sexo.Nombre,
+            'Descripcion': animal.Descripcion,
+            'Foto': animal.Foto,
+            'Contacto': animal.Contacto,
+            'Barrio':barrio.Nombre
+        }
+
+        return jsonify({'animal': datosAnimal})
     except Exception as error:
         return jsonify({'message': f'Internal Server Error: {error}'}), 500
 
