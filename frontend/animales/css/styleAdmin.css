@@ -18,7 +18,7 @@ body{
 }
 
 .secAnimales{
-    padding: 10px;
+    padding: 25px;
     display: grid;
     gap:15px;
     margin: auto auto;
@@ -132,7 +132,7 @@ body{
     align-items: center;
     justify-content: space-between;
     background-color: black;
-    height: 60px;
+    height: 80px;
     padding: 0 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     position: fixed;
@@ -144,7 +144,7 @@ body{
 
 
 .icon {
-    height: 40px;
+    height: 100px;
 }
 
 
