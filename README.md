@@ -29,7 +29,7 @@
 
 - Frontend  
     cd frontend  
-    python3 http.server
+    python3 -m http.server
 
 - Backend
     - Chequear que el app.config en el archivo app.py este configurado con los datos de quien lo está usando.
