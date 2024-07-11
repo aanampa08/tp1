@@ -45,6 +45,19 @@ function parse_data(animales){
     }
     for(let i=0; i < contenidoAnimales.length; i++){
         const animal=contenidoAnimales[i];
+        
+        if ((animal.Tipo === "Anios") && (animal.Edad == 1)) {
+            animal.Tipo = "Año";
+        } else if ((animal.Tipo === "Meses") && (animal.Edad == 1) ) {
+            animal.Tipo = "Mes";
+        } else if ((animal.Tipo === "Dias") && (animal.Edad == 1)) {
+            animal.Tipo = "Día";
+        } else if ((animal.Tipo === "Anios") ) {
+            animal.Tipo = "Años";
+        } else if ((animal.Tipo === "Dias") ) {
+            animal.Tipo = "Días";
+        }
+        
         if (user == "admin"){
             secAnimales.className="secAnimales";
             let divAnimalAdmin=document.createElement("div");
