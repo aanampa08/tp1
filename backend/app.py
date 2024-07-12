@@ -2,7 +2,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from flask_migrate import Migrate
-from huellitasBA import db, Animal, Barrio, Sexo
+from huellitasBA import db, Animal, Barrio, Sexo,  Adopcion, Usuario
 
 #Conexion con flask + postgresql
 app = Flask(__name__)

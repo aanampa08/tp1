@@ -26,3 +26,33 @@ class Animal(db.Model):
     Descripcion = db.Column(db.Text,nullable=False)
     Contacto = db.Column(db.String(255),nullable=False)
     barrioID=db.Column(db.Integer,db.ForeignKey('Barrio.idBarrio'),nullable=False)
+
+class Adopcion(db.Model):
+    __tablename__='Adopcion'
+    idAdopcion = db.Column(db.Integer, primary_key=True,autoincrement=True)
+    usuarioID=db.Column(db.Integer,db.ForeignKey('Usuario.idUsuario'),nullable=False)
+    animalID=db.Column(db.Integer,db.ForeignKey('Animal.idAnimal'),nullable=False)
+    Nombre = db.Column(db.String(255),nullable=False)
+    Edad =  db.Column(db.Integer,nullable=False)
+    Profesion = db.Column(db.String(255),nullable=False)
+    Telefono =  db.Column(db.String(225),nullable=False)
+    Email = db.Column(db.String(255),nullable=False)
+    Direccion =db.Column(db.String(225),nullable=False)
+    Localidad = db.Column(db.String(255),nullable=False)
+    Motivo = db.Column(db.Text,nullable=False)
+    tipoVivienda = db.Column(db.Text,nullable=False)
+    Exteriores = db.Column(db.Text,nullable=False)
+    Consenso = db.Column(db.Text,nullable=False)
+    Alergias = db.Column(db.Text,nullable=False)
+    Costos = db.Column(db.Text,nullable=False)
+    Adaptacion = db.Column(db.Text,nullable=False)
+    Compatibilidad = db.Column(db.Text,nullable=False)
+    regaloMascota = db.Column(db.Text,nullable=False)
+
+class Usuario(db.Model):
+    __tablename__='Usuario'
+    idUsuario = db.Column(db.Integer, primary_key=True,autoincrement=True)
+    Nombre = db.Column(db.String(255),nullable=False)
+    Contraseña = db.Column(db.String(255),nullable=False)
+    Email = db.Column(db.String(255))
+    Telefono = db.Column(db.String(255))
