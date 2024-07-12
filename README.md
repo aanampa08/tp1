@@ -17,15 +17,22 @@
 
 - Se necesita tener postgreSQL instalado.
 
-- Crear la base de datos en postgreSQL
-    createdb HuellitasBA;
-
-- Ejecurar los scripts para llenar la base de datos
-    - Primero se deben insertar los barrios y el género, dado que de esos datos depende la tabla de animales.
+- Crear la base de datos en postgreSQL  
+    CREATE DATABASE "HuellitasBA";
 
 - Modificar el app.config en el archivo app.py para que este configurado con los datos de quien lo está usando.
 
-## Correr normalmente
+- Ejecutar el archivo app.py para que se creen las tablas de la base de datos.  
+    cd backend    
+    python3 app.py
+
+- Ejecutar los scripts para llenar la base de datos desde la terminal.  
+    - Primero se deben insertar los barrios y el género, dado que de esos datos depende la tabla de animales.  
+        psql -U tu_usuario -d HuellitasBA -a -f ruta_al_archivo
+
+
+
+## Utilizacion normal
 
 - Frontend  
     cd frontend  
