@@ -9,7 +9,7 @@ app = Flask(__name__)
 CORS(app)
 port = 5000
 #Configuracion para la base de datos: HuellitasBA
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://maryalejandra:magrSQL@localhost:5432/HuellitasBA'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://vicksdb:1234@localhost:5432/HuellitasBA'
 
 migrate = Migrate(app, db)
 
@@ -198,6 +198,23 @@ def obtenerAnimales():
     except Exception as error:
         return jsonify({'message': f'Internal Server Error: {error}'}), 500
 
+@app.route('/usuarios', methods=["POST"])
+def nuevoUsuario():
+    try:
+        usuarioNuevo= request.json
+        nombre = usuarioNuevo.get('nombre')
+        nombreUsuario = usuarioNuevo.get('nombreUsuario')
+        contraseña = usuarioNuevo.get('contraseña')
+        email = usuarioNuevo.get('email')
+        telefono = usuarioNuevo.get('telefono')
+
+
+        nuevo_usuario = Usuario(Nombre=nombre,nombreUsuario = nombreUsuario,Contraseña=contraseña,Email=email,Telefono=telefono)
+        db.session.add(nuevo_usuario)
+        db.session.commit()
+        return jsonify({'Usuario':{'Nombre': nuevo_usuario.Nombre, 'Contrasenia': nuevo_usuario.Contraseña,'Email': nuevo_usuario.Email, 'Telefono': nuevo_usuario.Telefono}}), 201
+    except Exception as error:
+        return jsonify({'message': f'Internal Server Error: {error}'}), 500
 
 
 # ------------------------- Programa principal -------------------
