@@ -27,7 +27,7 @@
     python3 app.py
 
 - Ejecutar los scripts para llenar la base de datos desde la terminal.  
-    - Primero se deben insertar los barrios y el género, dado que de esos datos depende la tabla de animales.  
+    - Primero se deben insertar los barrios, el tipoAnimal y el género, dado que de esos datos depende la tabla de animales, luego los usuarios y por último las adopciones.  
         psql -U tu_usuario -d HuellitasBA -a -f ruta_al_archivo
 
 
