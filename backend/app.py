@@ -216,6 +216,39 @@ def nuevoUsuario():
     except Exception as error:
         return jsonify({'message': f'Internal Server Error: {error}'}), 500
 
+@app.route('/usuarios/<idUsuario>', methods = ["PUT"])
+def editarUsuario(idUsuario):
+    try:
+        usuario = Usuario.query.get(idUsuario)
+        #Pido el json con los cambios
+        datosEditados = request.json
+
+        #Si se cambio el campo, se actualiza su valor (y sino permanece como estaba)
+        if 'nombre' in datosEditados:
+            usuario.Nombre = datosEditados['nombre']
+        if 'nombreUsuario' in datosEditados:
+            usuario.nombreUsuario = datosEditados['nombreUsuario']
+        if 'contraseña' in datosEditados:
+            usuario.Contraseña = datosEditados['contraseña']
+        if 'email' in datosEditados:
+            usuario.Email = datosEditados['email']
+        if 'telefono' in datosEditados:
+            usuario.Telefono = datosEditados['telefono']
+        
+        db.session.commit() 
+
+        datosUsuario = {
+            'id': usuario.idUsuario,
+            'Nombre': usuario.Nombre,
+            'Username': usuario.nombreUsuario,
+            'Contraseña': usuario.Contraseña,
+            'Email': usuario.Email,
+            'Telefono': usuario.Telefono,
+        }
+
+        return jsonify({'Usuario': datosUsuario})
+    except Exception as error:
+        return jsonify({'message': f'Internal Server Error: {error}'}), 500
 
 # ------------------------- Programa principal -------------------
 if __name__ == '__main__':
