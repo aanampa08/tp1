@@ -26,6 +26,7 @@ class Animal(db.Model):
     Descripcion = db.Column(db.Text,nullable=False)
     Contacto = db.Column(db.String(255),nullable=False)
     barrioID=db.Column(db.Integer,db.ForeignKey('Barrio.idBarrio'),nullable=False)
+    tipoAnimalID=db.Column(db.Integer,db.ForeignKey('tipoAnimal.idTipoAnimal'),nullable=False)
 
 class Adopcion(db.Model):
     __tablename__='Adopcion'
@@ -53,6 +54,12 @@ class Usuario(db.Model):
     __tablename__='Usuario'
     idUsuario = db.Column(db.Integer, primary_key=True,autoincrement=True)
     Nombre = db.Column(db.String(255),nullable=False)
+    nombreUsuario = db.Column(db.String(255),nullable=False)
     Contraseña = db.Column(db.String(255),nullable=False)
     Email = db.Column(db.String(255))
     Telefono = db.Column(db.String(255))
+
+class tipoAnimal(db.Model):
+    __tablename__='tipoAnimal'
+    idTipoAnimal = db.Column(db.Integer, primary_key=True,autoincrement=True)
+    Tipo = db.Column(db.String(255),nullable=False)
