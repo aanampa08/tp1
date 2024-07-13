@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: linear-gradient(
+    rgba(0, 0, 0, 0.7),
+    rgba(0, 0, 0, 0.7)), url(https://i.postimg.cc/JhFLHHHb/fondo.png);
+    background-size: cover;
+    background-position: center;
+}
+
+.wrapper {
+    max-width: 850px;
+    padding: 28px;
+    margin: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.9);
+}
+
+h1 {
+    font-size: 26px;
+    font-weight: bold;
+    text-align: left;
+    color: #fff;
+    padding-bottom: 8px;
+    border-bottom: 1px solid silver;
+}
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
+.input-box, .selects {
+    display: flex;
+    flex-wrap: wrap;
+    width: 48%;
+    padding-bottom: 15px;
+}
+
+.input-box:nth-child(2n), .selects:nth-child(2n) {
+    justify-content: end;
+}
+
+.input-box label, .selects label {
+    width: 100%;
+    color: #fff;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.input-box input, .selects select {
+    height: 40px;
+    width: 100%;
+    padding: 0 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+.input-box input:is(:focus, :valid), .selects select:is(:focus, :valid) {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+span {
+    width: 100%;
+    color: #fff;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.animal{
+    display: flex;
+    flex-wrap: wrap;
+    width: 48%;
+}
+
+.animal-category label {
+    padding: 0 20px 0 5px;
+    font-size: 15px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.animal-category {
+    color: #fff;
+}
+
+.animal-category label, .animal-category input {
+    cursor: pointer;
+}
+
+.alert a {
+    font-weight: bold;
+    text-decoration: none;
+    color: skyblue;
+}
+
+.alert a:hover {
+    text-decoration: underline;
+}
+
+.button-container {
+    margin: 15px 0;
+}
+
+.button-container button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    display: block;
+    font-size: 20px;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    background-image: linear-gradient(to right, #aa076b, #61045f);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.button-container button:hover {
+    background-image: linear-gradient(to right, #61045f, #aa076b);
+}
