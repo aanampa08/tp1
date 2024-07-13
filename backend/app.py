@@ -9,7 +9,7 @@ app = Flask(__name__)
 CORS(app)
 port = 5000
 #Configuracion para la base de datos: HuellitasBA
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://aliss:123456@localhost:5432/HuellitasBA'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://vicksdb:1234@localhost:5432/HuellitasBA'
 
 migrate = Migrate(app, db)
 
@@ -70,16 +70,18 @@ def obtenerAnimal(idAnimal):
         animal=Animal.query.where(Animal.idAnimal == idAnimal).first()
         barrio = Barrio.query.where(Barrio.idBarrio == animal.barrioID).first()
         sexo = Sexo.query.where(Sexo.idSexo == animal.sexoID).first()
+        tipoMascota = tipoAnimal.query.where(tipoAnimal.idTipoAnimal == animal.tipoAnimalID).first()
         datosAnimal = {
             'id': animal.idAnimal,
             'Nombre': animal.Nombre,
             'Edad': animal.Edad,
-            'Tipo': animal.tipoEdad,
+            'TipoEdad': animal.tipoEdad,
             'Sexo':sexo.Nombre,
             'Descripcion': animal.Descripcion,
             'Foto': animal.Foto,
             'Contacto': animal.Contacto,
-            'Barrio':barrio.Nombre
+            'Barrio':barrio.Nombre,
+            'TipoAnimal' : tipoMascota.Tipo
         }
         return jsonify({'animal': datosAnimal})
     except Exception as error:
