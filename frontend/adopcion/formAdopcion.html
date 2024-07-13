@@ -17,7 +17,7 @@
 
     <div class="wrapper">
         <form id="formLogIn">
-            <h1>¡Adoptá!</h1>
+            <h1 id="adoptarNombre">¡Adoptá!</h1>
             <div class="content">
                 <div class="animal">
                     <span class="animal-title">Animal</span>
@@ -70,7 +70,7 @@
                 </div>
 
                 <div class="input-box">
-                    <label for="adoptionReason">¿Por qué motivo querés adoptar un perro/gato?</label>
+                    <label id="adoptionReason" for="adoptionReason">¿Por qué motivo querés adoptar un perro/gato?</label>
                     <input type="text" name="adoptionReason" placeholder="" required>
                 </div>                
 
@@ -104,7 +104,7 @@
                 </div>
 
                 <div class="selects">
-                    <label for="allergies">¿Alguien en la familia tiene alergia a los perros/gatos?</label>
+                    <label id="allergies" for="allergies">¿Alguien en la familia tiene alergia a los perros/gatos?</label>
                     <select name="allergies" id="allergies" required>
                         <option value="si">Si</option>
                         <option value="no">No</option>
@@ -112,7 +112,7 @@
                 </div>
 
                 <div class="selects">
-                    <label for="financialCommitment">¿Estás dispuesto a afrontar los costos de mantener en buen estado la salud del perro/gato?</label>
+                    <label id="financialCommitment" for="financialCommitment">¿Estás dispuesto a afrontar los costos de mantener en buen estado la salud del perro/gato?</label>
                     <select name="financialCommitment" id="financialCommitment" required>
                         <option value="si">Si</option>
                         <option value="no">No</option>
@@ -120,7 +120,7 @@
                 </div>
 
                 <div class="selects">
-                    <label for="timeCommitment">¿Estás dispuesto a darle el tiempo necesario al perro/gato para su adaptación?</label>
+                    <label id="timeCommitment" for="timeCommitment">¿Estás dispuesto a darle el tiempo necesario al perro/gato para su adaptación?</label>
                     <select name="timeCommitment" id="timeCommitment" required>
                         <option value="si">Si</option>
                         <option value="no">No</option>
@@ -128,7 +128,7 @@
                 </div>
 
                 <div class="selects">
-                    <label for="compatibility">¿Consideras que el perro/gato es compatible con tu vida familiar y laboral actual y/o futura?</label>
+                    <label id="compatibility" for="compatibility">¿Consideras que el perro/gato es compatible con tu vida familiar y laboral actual y/o futura?</label>
                     <select name="compatibility" id="compatibility" required>
                         <option value="si">Si</option>
                         <option value="no">No</option>
@@ -141,5 +141,6 @@
             </div>
         </form>
     </div>
+    <script src="./js/script.js"></script>
 </body>
 </html>
