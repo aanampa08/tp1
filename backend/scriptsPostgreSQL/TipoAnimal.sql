@@ -1,2 +1,2 @@
-insert into "tipoAnimal"("Tipo") values ('Perro');
-insert into "tipoAnimal"("Tipo") values ('Gato');
+insert into "tipoAnimal"("Tipo") values ('Felino');
+insert into "tipoAnimal"("Tipo") values ('Canino');
