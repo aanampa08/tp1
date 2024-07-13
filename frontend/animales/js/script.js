@@ -145,6 +145,12 @@ function parse_data(animales) {
             let divElementos = document.createElement("div");
             divElementos.className = "elementos";
 
+            let btnAdopcion=document.createElement("button");
+            btnAdopcion.className="btnAdopcion";
+            btnAdopcion.innerHTML = "Adoptar Huellita";
+            btnAdopcion.onclick = function(){
+                window.location.href = `../adopcion/formAdopcion.html?idAnimal=${animal.id}`
+            };
 
             let pSexo = document.createElement("p");
             let spanSexo = document.createElement("span");
@@ -197,6 +203,7 @@ function parse_data(animales) {
 
             divInfo.append(h3);
             divInfo.append(divElementos);
+            divElementos.append(btnAdopcion);
             divInfo.append(pSexo);
             divInfo.append(pBarrio);
             divInfo.append(pEdad);

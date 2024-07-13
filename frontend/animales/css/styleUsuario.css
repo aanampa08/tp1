@@ -68,7 +68,19 @@ body{
     padding-bottom: 5px;
 }
 
+.btnAdopcion{
+    background-color: black;
+    color: white;
+    border-radius: 1em;
+    font-size: 20px;
+    padding: 0.5em;
+    white-space: nowrap;
+}
 
+.btnAdopcion:hover{
+    box-shadow: inset 0 0 0 2000px rgba(108, 94, 231, 0.85);
+    transition: 1.5s;
+}
 
 .agregarAnimal{
     box-shadow: inset 0 0 0 2000px rgb(241, 238, 238,0.85);
