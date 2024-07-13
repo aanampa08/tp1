@@ -2,17 +2,33 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from flask_migrate import Migrate
-from huellitasBA import db, Animal, Barrio, Sexo,  Adopcion, Usuario
+from huellitasBA import db, Animal, Barrio, Sexo,  Adopcion, Usuario,tipoAnimal
 
 #Conexion con flask + postgresql
 app = Flask(__name__)
 CORS(app)
 port = 5000
 #Configuracion para la base de datos: HuellitasBA
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://vicksdb:1234@localhost:5432/HuellitasBA'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://aliss:123456@localhost:5432/HuellitasBA'
 
 migrate = Migrate(app, db)
 
+@app.route('/tipoAnimal')
+def obtenerTipoAnimal():
+    try:
+        tiposAnimal = tipoAnimal.query.all()
+        tiposListado = []
+        for tipo in tiposAnimal:
+            datoTipo = {
+                'id': tipo.idTipoAnimal,
+                'Tipo': tipo.Tipo
+            }
+            #Guardamos cada barrio en el listado
+            tiposListado.append(datoTipo)
+        #Retornamos el json con los barrios cargados
+        return jsonify({'tiposAnimal': tiposListado})
+    except Exception as error:
+        return jsonify({'message': f'Internal Server Error: {error}'}), 500
 
 @app.route('/barrios')
 def obtenerBarrios():
@@ -147,26 +163,54 @@ def editarAnimal(idAnimal):
 @app.route('/animales', methods=["POST"])
 def nuevoAnimal():
     try:
-        animalNuevo= request.json
-        nombre = animalNuevo.get('nombre')
-        edad = animalNuevo.get('edad')
-        tipoEdad = animalNuevo.get('tipoEdad')
-        sexo = animalNuevo.get('sexo')
-        descripcion = animalNuevo.get('descripcion')
-        foto = animalNuevo.get('foto')
-        contacto = animalNuevo.get('contacto')
-        barrio = animalNuevo.get('barrio')
-
-        #consigo el id de sexo y barrio
-        infoBarrio = Barrio.query.where(Barrio.Nombre == barrio).first()
-        infoSexo = Sexo.query.where(Sexo.Nombre == sexo).first()
-
-
-        nuevo_animal = Animal(Nombre=nombre,Edad=edad,tipoEdad=tipoEdad,sexoID=infoSexo.idSexo,Descripcion=descripcion,Contacto=contacto,barrioID=infoBarrio.idBarrio)
+        animalNuevo = request.json
+        print(animalNuevo)
+        print(animalNuevo['nombre'])
+        print(animalNuevo['edad'])
+        print(animalNuevo['tipoEdad'])
+        print(animalNuevo['sexo'])
+        print(animalNuevo['descripcion'])
+        nombre = animalNuevo['nombre']
+        edad = animalNuevo['edad']
+        tipoEdad = animalNuevo['tipoEdad']
+        sexo = animalNuevo['sexo']
+        descripcion = animalNuevo['descripcion']
+        foto = animalNuevo['foto']
+        contacto = animalNuevo['contacto']
+        barrio = animalNuevo['barrio']
+        tipo=animalNuevo['tipo']
+        print(tipo)
+        # Get the id of sexo and barrio
+        infoBarrio = Barrio.query.filter_by(Nombre=barrio).first()
+        infoSexo = Sexo.query.filter_by(Nombre=sexo).first()
+        infoTipo=tipoAnimal.query.filter_by(Tipo=tipo).first()
+        print(infoTipo)
+        nuevo_animal = Animal(
+            Nombre=nombre,
+            Edad=edad,
+            tipoEdad=tipoEdad,
+            sexoID=infoSexo.idSexo,
+            Descripcion=descripcion,
+            Foto=foto,
+            Contacto=contacto,
+            barrioID=infoBarrio.idBarrio,
+            tipoAnimalID=infoTipo.idTipoAnimal
+        )
         db.session.add(nuevo_animal)
         db.session.commit()
-        return jsonify({'animal':{nuevo_animal.Nombre}})
+
+        return jsonify({
+            'Nombre': nombre,
+            'Edad': edad,
+            'TipoEdad': tipoEdad,
+            'Sexo': sexo,
+            'Descripcion': descripcion,
+            'Foto': foto,
+            'Contacto': contacto,
+            'Barrio': barrio
+        }), 201
     except Exception as error:
+        print(error)
         return jsonify({'message': f'Internal Server Error: {error}'}), 500
 
 
