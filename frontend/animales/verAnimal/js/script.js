@@ -10,15 +10,16 @@ document.addEventListener("DOMContentLoaded", function() {
             return response.json();
         })
         .then(animal => {
-            console.log(animal["animal"].Barrio, animal["animal"].Sexo, animal["animal"].Contacto, animal["animal"].Edad,animal["animal"].Descripcion,animal["animal"].Nombre, animal["animal"].Foto, animal["animal"].Tipo); 
-
+            console.log(idAnimal);
+            const dataAnimal= animal["animal"];
+            // console.log(dataAnimal);
             const divVista = document.getElementById("secVistaAnimal");
 
             let divAnimal = document.createElement("div");
             divAnimal.className = "card mb-3 custom-card";
 
             let imagen = document.createElement("img");
-            imagen.src = animal.Foto;
+            imagen.src = dataAnimal.Foto;
             imagen.className = "card-img-top";
 
             let divCardBody = document.createElement("div");
@@ -26,22 +27,22 @@ document.addEventListener("DOMContentLoaded", function() {
 
             let nombre = document.createElement("h3");
             nombre.className = "card-title";
-            nombre.innerText = animal.Nombre;
+            nombre.innerText = dataAnimal.Nombre;
 
             let divInfo = document.createElement("div");
             divInfo.className = "infoAnimal";
 
             let pSexo = document.createElement("p");
-            pSexo.innerHTML = `<b>Sexo:</b> ${animal.Sexo}`;
+            pSexo.innerHTML = `<b>Sexo:</b> ${dataAnimal.Sexo}`;
 
             let pEdad = document.createElement("p");
-            pEdad.innerHTML = `<b>Edad:</b> ${animal.Edad} ${animal.Tipo}`;
+            pEdad.innerHTML = `<b>Edad:</b> ${dataAnimal.Edad} ${dataAnimal.TipoEdad}`;
 
             let descripcion = document.createElement("p");
-            descripcion.innerHTML = `<b>Descripción:</b> ${animal.Descripcion}`;
+            descripcion.innerHTML = `<b>Descripción:</b> ${dataAnimal.Descripcion}`;
 
             let pInsta = document.createElement("p");
-            pInsta.innerHTML = `<i class="fab fa-instagram"></i> ${animal.Contacto}`;
+            pInsta.innerHTML = `<i class="fab fa-instagram"></i> ${dataAnimal.Contacto}`;
 
             divCardBody.appendChild(nombre);
             divCardBody.appendChild(divInfo);
