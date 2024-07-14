@@ -7,6 +7,10 @@
     box-sizing: border-box;
 }
 
+body {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(https://i.postimg.cc/JhFLHHHb/fondo.png);
+}
+
 /* nav */
 .nav {
     width: 100%;
@@ -57,9 +61,28 @@
 
 header {
     width: 100%;
-    margin-bottom: 70px; 
+    margin-bottom: 70px;
 }
 
 .nav ul {
-    margin-right: auto; 
+    margin-right: auto;
+}
+
+#secVistaAnimal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.custom-card {
+    max-width: 900px;
+    background-color: white;
+    height: auto;
+}
+
+.custom-card img{
+    height: 260px;
+    border-radius: 0.7em;
+    margin: 15px;
 }
