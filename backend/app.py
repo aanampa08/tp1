@@ -305,6 +305,30 @@ def nuevoUsuario():
     except Exception as error:
         return jsonify({'message': f'Internal Server Error: {error}'}), 500
 
+@app.route('/login', methods=["POST"])
+def login():
+    try:
+        usuarioLoggeado = request.json
+        nombreUsuario = usuarioLoggeado.get('nombreUsuario')
+        contraseña = usuarioLoggeado.get('contraseña')
+
+
+        usuario = Usuario.query.filter_by(nombreUsuario = nombreUsuario, Contraseña = contraseña).first()
+        if usuario:
+            return jsonify({
+                'message': 'Login realizado con éxito',
+            }), 200
+        else:
+            return jsonify({
+                'message': 'Usuario o contraseña incorrectos'
+            }), 401
+
+    except Exception as error:
+        return jsonify({
+            'message': f'Internal Server Error: {error}'
+        }), 500
+
+
 @app.route('/usuarios/<idUsuario>', methods = ["PUT"])
 def editarUsuario(idUsuario):
     try:
