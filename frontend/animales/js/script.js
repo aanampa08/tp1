@@ -157,6 +157,9 @@ function parse_data(animales) {
             let descripcion = document.createElement("p");
             descripcion.innerHTML = `<b>Descripcion: </b>${animal.Descripcion}`;
 
+            let pBarrio = document.createElement("p");
+            pBarrio.innerHTML = `<b>Barrio: </b>${animal.Barrio}`;
+
             let pInsta = document.createElement("p");
             pInsta.innerHTML = "<i class=\"fa-brands fa-instagram\" style=\"color:#000000; margin-right: 5px;\"></i>" + animal.Contacto;
             
@@ -169,6 +172,7 @@ function parse_data(animales) {
             divData.append(pEdad);
             divInfo.append(divData);
             divAnimal.append(divInfo);
+            divInfo.append(pBarrio);
             divInfo.append(descripcion);
             divInfo.append(pInsta);
 
@@ -217,7 +221,8 @@ function parse_data(animales) {
 
                     let pEdad = document.createElement("p");
                     pEdad.innerHTML = `<b>Edad: </b>${animal.Edad} ${animal.Tipo}`;
-
+                    let pBarrio = document.createElement("p");
+                    pBarrio.innerHTML = `<b>Barrio: </b>${animal.Barrio}`;
                    
                     divAnimal.append(imagen);
 
@@ -226,6 +231,7 @@ function parse_data(animales) {
 
                     divData.append(pSexo);
                     divData.append(pEdad);
+                    divInfo.append(pBarrio);
                     divInfo.append(divData);
                     divAnimal.append(divInfo);
                     divVistaA.append(divAnimal);
@@ -466,6 +472,9 @@ function mostrarTipo(tipo) {
                     let pEdad = document.createElement("p");
                     pEdad.innerHTML = `<b>Edad: </b>${animal.Edad} ${animal.Tipo}`;
 
+                    let pBarrio = document.createElement("p");
+                    pBarrio.innerHTML = `<b>Barrio: </b>${animal.Barrio}`;
+
                     let descripcion = document.createElement("p");
                     descripcion.innerHTML = `<b>Descripcion: </b>${animal.Descripcion}`;
 
@@ -480,6 +489,7 @@ function mostrarTipo(tipo) {
                     divData.append(pSexo);
                     divData.append(pEdad);
                     divInfo.append(divData);
+                    divInfo.append(pBarrio);
                     divAnimal.append(divInfo);
                     divInfo.append(descripcion);
                     divInfo.append(pInsta);
@@ -528,7 +538,8 @@ function mostrarTipo(tipo) {
                     let pEdad = document.createElement("p");
                     pEdad.innerHTML = `<b>Edad: </b>${animal.Edad} ${animal.Tipo}`;
 
-                   
+                    let pBarrio = document.createElement("p");
+                    pBarrio.innerHTML = `<b>Barrio: </b>${animal.Barrio}`;
                     divAnimal.append(imagen);
 
                     divAnimal.append(divCentrar);
@@ -537,6 +548,7 @@ function mostrarTipo(tipo) {
                     divData.append(pSexo);
                     divData.append(pEdad);
                     divInfo.append(divData);
+                    divInfo.append(pBarrio);
                     divAnimal.append(divInfo);
                     divVista.append(divAnimal);
                     section.append(divVista);
