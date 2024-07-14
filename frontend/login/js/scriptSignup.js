@@ -1,6 +1,8 @@
 document.getElementById('formSignUp').addEventListener('submit', function (event) {
     event.preventDefault();
 
+    const idAnimal =  new URLSearchParams(window.location.search).get("idAnimal");
+
     const name = document.getElementById('name').value;
     const username = document.getElementById('uname').value;
     const phone = document.getElementById('phone').value;
@@ -40,7 +42,7 @@ document.getElementById('formSignUp').addEventListener('submit', function (event
         })
         .then(data => {
             console.log('Usuario creado:', data);
-            alert('Usuario creado con éxito');
+            window.location.href = `./login.html?idAnimal=${idAnimal}`
         })
         .catch(error => {
             console.error('Error:', error);

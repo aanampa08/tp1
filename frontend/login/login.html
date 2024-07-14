@@ -23,24 +23,25 @@
             <div class="content">
 
                 <div class="input-box">
-                    <label for="name">Usuario</label>
-                    <input type="text" name="uname" placeholder="Usuario" required>
+                    <label for="uname">Usuario</label>
+                    <input id="uname" type="text" name="uname" placeholder="Usuario" required>
                 </div>
 
                 <div class="input-box">
                     <label for="password">Contraseña</label>
-                    <input type="password" name="password" placeholder="123456789" required>
+                    <input id="password" type="password" name="password" placeholder="123456789" required>
                 </div>
                 
                 <div class="alert">
-                    <p><a href="signup.html">Crear cuenta</a></p>
+                    <p><a id="crearCuenta">Crear cuenta</a></p>
                 </div>
 
                 <div class="button-container">
-                    <button>Iniciar</button>
+                    <button id="btnIniciarSesion">Iniciar Sesion</button>
                 </div>
             </div>    
         </form>
     </div>
+    <script src="./js/scriptLogin.js"></script>
 </body>
 </html>

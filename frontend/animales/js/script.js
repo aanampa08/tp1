@@ -197,7 +197,7 @@ function parse_data(animales) {
                     let aAdopta = document.createElement("a");
                     aAdopta.innerHTML = "<i class=" + '"fa-regular fa-newspaper"' + "></i>";
                 
-                    aAdopta.setAttribute("href", `../adopcion/formAdopcion.html?idAnimal=${animal.id}`);
+                    aAdopta.setAttribute("href", `../login/login.html?idAnimal=${animal.id}`);
 
                     let aInfo = document.createElement("a");
                     aInfo.innerHTML = "<i class=" + '"fa-solid fa-circle-info"' + "></i>";
