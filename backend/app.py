@@ -362,6 +362,79 @@ def editarUsuario(idUsuario):
         return jsonify({'Usuario': datosUsuario})
     except Exception as error:
         return jsonify({'message': f'Internal Server Error: {error}'}), 500
+    
+@app.route('/adopciones', methods=["POST"])
+def nuevaAdopciol():
+    try:
+        adopcionNueva = request.json
+
+        animal_id = adopcionNueva['animalID']
+        username = adopcionNueva['username'] 
+        nombre = adopcionNueva['nombre']
+        edad = adopcionNueva['edad']
+        profesion = adopcionNueva['profesion']
+        telefono = adopcionNueva['telefono']
+        email = adopcionNueva['email']
+        direccion = adopcionNueva['direccion']
+        localidad = adopcionNueva['localidad']
+        motivo = adopcionNueva['motivo']
+        tipoVivienda = adopcionNueva['tipoVivienda']
+        exteriores = adopcionNueva['exteriores']
+        consenso = adopcionNueva['consenso']
+        alergias = adopcionNueva['alergias']
+        costos = adopcionNueva['costos']
+        adaptacion = adopcionNueva['adaptacion']
+        compatibilidad = adopcionNueva['compatibilidad']
+        regaloMascota = adopcionNueva['regaloMascota']
+        
+        infoUsuario = Usuario.query.filter_by(nombreUsuario=username).first()
+
+        nueva_adopcion = Adopcion(
+            usuarioID = infoUsuario.idUsuario,
+            animalID = animal_id,
+            Nombre = nombre,
+            Edad = edad,
+            Profesion = profesion,
+            Telefono = telefono,
+            Email = email,
+            Direccion = direccion,
+            Localidad = localidad,
+            Motivo   = motivo,
+            tipoVivienda = tipoVivienda,
+            Exteriores = exteriores,
+            Consenso = consenso,
+            Alergias = alergias,
+            Costos = costos,
+            Adaptacion = adaptacion,
+            Compatibilidad = compatibilidad,
+            regaloMascota = regaloMascota
+        )
+        db.session.add(nueva_adopcion)
+        db.session.commit()
+
+        return jsonify({
+            'Usuario' : username,
+            'Animal ID' : animal_id,
+            'Nombre' : nombre,
+            'Edad' : edad,
+            'Profesion' : profesion,
+            'Telefono' : telefono,
+            'Email' : email,
+            'Direccion' : direccion,
+            'Localidad' : localidad,
+            'Motivo'   : motivo,
+            'tipoVivienda' : tipoVivienda,
+            'Exteriores' : exteriores,
+            'Consenso' : consenso,
+            'Alergias' : alergias,
+            'Costos' : costos,
+            'Adaptacion' : adaptacion,
+            'Compatibilidad' : compatibilidad,
+            'regaloMascota' : regaloMascota
+        }), 201
+    except Exception as error:
+        print(error)
+        return jsonify({'message': f'Internal Server Error: {error}'}), 500
 
 # ------------------------- Programa principal -------------------
 if __name__ == '__main__':
