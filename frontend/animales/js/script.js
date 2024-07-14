@@ -158,8 +158,8 @@ function parse_data(animales) {
             descripcion.innerHTML = `<b>Descripcion: </b>${animal.Descripcion}`;
 
             let pInsta = document.createElement("p");
-            pInsta.innerHTML = "<i class=" + '"fa-brands fa-instagram"' + ' style="color:#00000;"' + "></i>" + `${animal.Contacto}`;
-
+            pInsta.innerHTML = "<i class=\"fa-brands fa-instagram\" style=\"color:#000000; margin-right: 5px;\"></i>" + animal.Contacto;
+            
             divAnimal.append(imagen);
 
             divAnimal.append(divCentrar);
