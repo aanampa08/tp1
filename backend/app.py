@@ -9,7 +9,7 @@ app = Flask(__name__)
 CORS(app)
 port = 5000
 #Configuracion para la base de datos: HuellitasBA
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://vicksdb:1234@localhost:5432/HuellitasBA'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://aliss:123456@localhost:5432/HuellitasBA'
 
 migrate = Migrate(app, db)
 
@@ -120,19 +120,25 @@ def obtenerAnimal(idAnimal):
 @app.route('/animal/<idAnimal>', methods = ["DELETE"])
 def eliminarAnimal(idAnimal):
     try:
-        animal = Animal.query.get(idAnimal)
-
-        db.session.delete(animal)
-        db.session.commit()
+        animal=Animal.query.where(Animal.idAnimal == idAnimal).first()
+        infoAdopcion = Adopcion.query.filter_by(animalID = idAnimal).first()
+        if(infoAdopcion==None):
+            print("NO HAY ADOPCION")
+            db.session.delete(animal)
+            db.session.commit()
+            return jsonify({'message': f'Animal {idAnimal} eliminado correctamente'})
+        else:
+            print("HAY ADOPCION: ",infoAdopcion)
+            return jsonify({'message':False})
         
-        return jsonify({'message': f'Animal {idAnimal} eliminado correctamente'})
+        
     except Exception as error:
         return jsonify({'message': f'Internal Server Error: {error}'}), 500
 
 @app.route('/animal/<idAnimal>', methods = ["PUT"])
 def editarAnimal(idAnimal):
     try:
-        animal = Animal.query.get(idAnimal)
+        animal=Animal.query.where(Animal.idAnimal == idAnimal).first()
         #Pido el json con los cambios
         datosEditados = request.json
 
@@ -196,12 +202,6 @@ def editarAnimal(idAnimal):
 def nuevoAnimal():
     try:
         animalNuevo = request.json
-        print(animalNuevo)
-        print(animalNuevo['nombre'])
-        print(animalNuevo['edad'])
-        print(animalNuevo['tipoEdad'])
-        print(animalNuevo['sexo'])
-        print(animalNuevo['descripcion'])
         nombre = animalNuevo['nombre']
         edad = animalNuevo['edad']
         tipoEdad = animalNuevo['tipoEdad']
