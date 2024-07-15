@@ -15,14 +15,11 @@ function parse_data(adopciones) {
         let divCard = document.createElement("div");
         divCard.className = `card card-${i % 4}`;
 
-        //let divCard = document.createElement("div");
-        //divCard.className = `card card-${i % 5}`;
-
-
         let pExit = document.createElement("p");
         pExit.className = "card__exit";
         let iExit = document.createElement("i");
         iExit.className = "fa-solid fa-xmark"
+        pExit.addEventListener('click', (event) => borrar_adopcion(event, adopcion.idAdopcion));
 
         let nombreAnimal = document.createElement("h3");
         nombreAnimal.innerText = `Solicitud para adoptar a ${adopcion.Animal}`;
@@ -109,3 +106,23 @@ fetch('http://localhost:5000/adopciones')
     .catch(request_error);
 
 
+function borrar_adopcion(event, idAdopcion) {
+    event.preventDefault();
+
+    const confirmacion = confirm(`¿Está seguro de eliminar esta solicitud de adopcion?`);
+    if (!confirmacion) {
+        return;
+    }
+
+    fetch(`http://localhost:5000/adopcion/${idAdopcion}`, {
+        method: 'DELETE',
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log("Eliminacion realizada con exito")
+        })
+        .catch(error => {
+            console.error(`Error al borrar la solicitud de adopcion ${id}:`, error);
+            alert('Error al intentar eliminar la solicitud de adopcion. Inténtalo de nuevo más tarde.');
+        });
+}
