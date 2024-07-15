@@ -69,10 +69,10 @@ document.addEventListener("DOMContentLoaded", function() {
             pInsta.innerHTML = `<i class="fab fa-instagram"></i> ${dataAnimal.Contacto}`;
 
             let button = document.createElement("button");
-            button.innerText = "Quiero adoptar";
+            button.innerText = `Quiero adoptar a ${dataAnimal.Nombre}`;
             button.className = "btn btn-primary"; 
             button.addEventListener("click", function() {
-                alert(`Adoptando a ${dataAnimal.Nombre}`);
+                window.location.href =  `../../login/login.html?idAnimal=${idAnimal}`;
             });
 
             divCardBody.appendChild(nombre);
