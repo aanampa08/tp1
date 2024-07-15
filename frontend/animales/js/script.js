@@ -244,91 +244,7 @@ function parse_data(animales) {
                     divAnimal.append(divInfo);
                     divVistaA.append(divAnimal);
                     secAnimales.append(divVistaA);
-            // secAnimales.className = "secAnimales";
-            // let divAnimalUsuario = document.createElement("div");
-            // divAnimalUsuario.className = "animalUsuario";
-
-            // //cosas a agregar
-            // let img = document.createElement("img");
-            // img.src = animal.Foto;
-            // let divInfo = document.createElement("div");
-            // divInfo.className = "infoAnimal";
-            // let h3 = document.createElement("h3");
-            // h3.innerText = animal.Nombre;
-            // let divElementos = document.createElement("div");
-            // divElementos.className = "elementos";
-
-            // let btnAdopcion = document.createElement("button");
-            // btnAdopcion.className = "btnAdopcion";
-            // btnAdopcion.innerHTML = "Adoptar Huellita";
-            // btnAdopcion.onclick = function () {
-            //     window.location.href = `../adopcion/formAdopcion.html?idAnimal=${animal.id}`
-            // };
-
-            // let pSexo = document.createElement("p");
-            // let spanSexo = document.createElement("span");
-
-            // let textSexo = document.createTextNode(animal.Sexo);
-            // spanSexo.appendChild(textSexo);
-
-            // pSexo.appendChild(spanSexo);
-
-
-
-            // let pBarrio = document.createElement("p");
-            // let spanBarrio = document.createElement("span");
-            // spanBarrio.appendChild(document.createTextNode("Barrio: "));
-
-            // pBarrio.appendChild(spanBarrio);
-            // pBarrio.appendChild(document.createTextNode(` ${animal.Barrio}`));
-
-
-
-            // let pEdad = document.createElement("p");
-            // let spanEdad = document.createElement("span");
-
-            // let textEdad = document.createTextNode("Edad: ");
-            // let infoEdad = document.createTextNode(`${animal.Edad} ${animal.Tipo}`);
-            // spanEdad.appendChild(textEdad);
-
-            // pEdad.appendChild(spanEdad);
-
-            // pEdad.appendChild(infoEdad);
-
-
-
-            // let pDesc = document.createElement("p");
-            // let spanDesc = document.createElement("span");
-
-            // spanDesc.appendChild(document.createTextNode("Descripcion: "));
-            // pDesc.appendChild(spanDesc);
-            // pDesc.appendChild(document.createTextNode(`  ${animal.Descripcion}`));
-
-
-
-            // let pInsta = document.createElement("p");
-            // let iInsta = document.createElement("i");
-            // iInsta.className = "fa-brands fa-instagram";
-            // iInsta.style.color = "#000000";
-            // pInsta.appendChild(iInsta);
-            // let contacto = document.createTextNode(` ${animal.Contacto}`);
-            // pInsta.appendChild(contacto);
-
-            // divInfo.append(h3);
-            // divInfo.append(divElementos);
-            // divElementos.append(btnAdopcion);
-            // divInfo.append(pSexo);
-            // divInfo.append(pBarrio);
-            // divInfo.append(pEdad);
-            // divInfo.append(pDesc);
-            // divInfo.append(pInsta);
-
-
-            // divAnimalUsuario.append(img);
-            // divAnimalUsuario.append(divInfo);
-
-
-            // secAnimales.append(divAnimalUsuario);
+   
         }
 
     }
@@ -352,7 +268,12 @@ function borrar_animal(event, id) {
     })
         .then(response => response.json())
         .then(data => {
-            window.location.href = "./index.html?user=admin";
+            if(data['message']==false){
+                alert('El animal tiene una solicitud de adopcion.No puede borrar el animal');
+            }
+            else{
+                window.location.href = "./index.html?user=admin";
+            }
         })
         .catch(error => {
             console.error(`Error al borrar el animal ${id}:`, error);

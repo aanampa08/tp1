@@ -48,8 +48,8 @@ document.getElementById('formularioNuevaHuella').addEventListener('submit', func
             return response.json();
         })
         .then(resultado => {
-            console.log('Respuesta:', resultado);
-            // Aquí puede mostrar desde el índice que se creó el animal
+            alert(`Animal ${nombre} agregado exitosamente!`)
+            window.location.href = '/animales/index.html?user=admin';
         })
         .catch(error => {
             console.error('Error:', error);
