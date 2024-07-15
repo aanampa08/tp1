@@ -29,6 +29,33 @@ body{
     z-index: 1000;
 }
 
+.nav ul {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.nav ul li {
+    margin: 0 10px;
+}
+
+.nav ul li a {
+    font-size: 15px;
+    padding: 15px;
+    display: block;
+    font-weight: 600;
+    color: white;
+    text-decoration: none;
+}
+
+.nav ul li a:hover {
+    background-color: rgba(190, 178, 178, 0.37);
+    border-radius: 5px;
+    transition: 0.5s;
+}
+
 .icon {
     height: 100px;
 }
@@ -64,3 +91,73 @@ header {
 .adoption-card p {
     margin: 0.5em 0;
 }
+
+/* CARDS */
+
+
+.cards {
+    padding-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;   
+}
+  
+.card {
+margin: 20px;
+padding: 20px;
+width: 500px;
+min-height: 200px;
+display: grid;
+grid-template-rows: 20px 50px 1fr 50px;
+border-radius: 10px;
+box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+transition: all 0.2s;
+background-color: rgb(0, 0, 0);
+}
+
+.card:hover {
+box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
+transform: scale(1.01);
+}
+
+.card__exit {
+position: relative;
+text-decoration: none;
+color: rgba(255, 255, 255, 0.9);
+}
+
+.card__exit {
+grid-row: 1/2;
+justify-self: end;
+}
+
+.card__title {
+font-weight: 400;
+color: #ffffff;
+}
+
+
+/* CARD BACKGROUNDS */
+
+.card-0 {
+background: radial-gradient(#1fe4f5, #3fbafe);
+}
+
+.card-1 {
+background: radial-gradient(#fbc1cc, #fa99b2);
+}
+
+.card-2 {
+background: radial-gradient(#76b2fe, #b69efe);
+}
+
+.card-3 {
+background: radial-gradient(#60efbc, #58d5c9);
+}
+
+.card-4 {
+background: radial-gradient(#f588d8, #c0a3e5);
+}
+  
+  
+  
