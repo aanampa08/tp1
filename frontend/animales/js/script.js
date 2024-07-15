@@ -189,7 +189,7 @@ function parse_data(animales) {
 
         }
         else if (user == "usuario") {
-            console.log("debo armar");
+            
                     let divAnimal = document.createElement("div");
                     divAnimal.className = "cardAnimal";
 
@@ -251,7 +251,6 @@ function parse_data(animales) {
 }
 
 function request_error(error) {
-    console.log("ERROR");
     console.log(error);
 }
 
@@ -288,7 +287,7 @@ if (user == null) {
     //en caso de no existir dicho paramentro, REDIRECCIONO la pagina
     window.location.href = "./usuario/index.html";
 }
-// console.log(user);
+
 
 fetch(`http://localhost:5000/animales`)
     .then(response_received)
@@ -320,7 +319,7 @@ function tipoAnimal() {
     }
 
     function request_error_tipo(error) {
-        console.log("ERROR");
+        
         console.log(error);
     }
 

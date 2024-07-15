@@ -34,7 +34,6 @@ document.getElementById('formLogIn').addEventListener('submit', function (event)
             return response.json();
         })
         .then(data => {
-            console.log('Usuario :', data);
             const idAnimal =  new URLSearchParams(window.location.search).get("idAnimal");
             window.location.href = `../adopcion/formAdopcion.html?username=${username}&idAnimal=${idAnimal}`
         })

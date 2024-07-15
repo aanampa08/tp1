@@ -25,7 +25,7 @@ function parse_data(data) {
 }
 
 function request_error(error) {
-    console.log("ERROR");
+    
     console.log(error);
 }
 

@@ -123,12 +123,10 @@ def eliminarAnimal(idAnimal):
         animal=Animal.query.where(Animal.idAnimal == idAnimal).first()
         infoAdopcion = Adopcion.query.filter_by(animalID = idAnimal).first()
         if(infoAdopcion==None):
-            print("NO HAY ADOPCION")
             db.session.delete(animal)
             db.session.commit()
             return jsonify({'message': f'Animal {idAnimal} eliminado correctamente'})
         else:
-            print("HAY ADOPCION: ",infoAdopcion)
             return jsonify({'message':False})
         
         
@@ -211,12 +209,12 @@ def nuevoAnimal():
         contacto = animalNuevo['contacto']
         barrio = animalNuevo['barrio']
         tipo=animalNuevo['tipo']
-        print(tipo)
+        
         # Get the id of sexo and barrio
         infoBarrio = Barrio.query.filter_by(Nombre=barrio).first()
         infoSexo = Sexo.query.filter_by(Nombre=sexo).first()
         infoTipo=tipoAnimal.query.filter_by(Tipo=tipo).first()
-        print(infoTipo)
+       
         nuevo_animal = Animal(
             Nombre=nombre,
             Edad=edad,
@@ -242,7 +240,7 @@ def nuevoAnimal():
             'Barrio': barrio
         }), 201
     except Exception as error:
-        print(error)
+       
         return jsonify({'message': f'Internal Server Error: {error}'}), 500
 
 
@@ -450,7 +448,7 @@ def nuevaAdopcion():
             'regaloMascota' : regaloMascota
         }), 201
     except Exception as error:
-        print(error)
+        
         return jsonify({'message': f'Internal Server Error: {error}'}), 500
     
 @app.route('/adopciones')
