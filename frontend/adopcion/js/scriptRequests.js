@@ -15,11 +15,11 @@ function parse_data(adopciones) {
         let divCard = document.createElement("div");
         divCard.className = `card card-${i % 4}`;
 
-        let pExit = document.createElement("p");
-        pExit.className = "card__exit";
+        let aExit = document.createElement("a");
+        aExit.className = "card__exit";
         let iExit = document.createElement("i");
         iExit.className = "fa-solid fa-xmark"
-        pExit.addEventListener('click', (event) => borrar_adopcion(event, adopcion.idAdopcion));
+        aExit.addEventListener('click', (event) => borrar_adopcion(event, adopcion.idAdopcion));
 
         let nombreAnimal = document.createElement("h3");
         nombreAnimal.innerText = `Solicitud para adoptar a ${adopcion.Animal}`;
@@ -70,8 +70,35 @@ function parse_data(adopciones) {
         tipoVivienda.innerHTML = `<b>Tipo de vivienda: </b>${adopcion.tipoVivienda}`;
         tipoVivienda.className = "card__title"
 
+        let exteriores = document.createElement("p");
+        exteriores.innerHTML = `<b>¿Tiene balcón, terraza, patio o jardín?: </b>${adopcion.Exteriores}`;
+        exteriores.className = "card__title"
 
-        // Append elements to the card
+        let consenso = document.createElement("p");
+        consenso.innerHTML = `<b>¿Todos en el hogar quieren adoptar?: </b>${adopcion.Consenso}`;
+        consenso.className = "card__title"
+
+        let alergias = document.createElement("p");
+        alergias.innerHTML = `<b>¿Alguien en la familia tiene alergia a las mascotas?: </b>${adopcion.Alergias}`;
+        alergias.className = "card__title"
+
+        let costos = document.createElement("p");
+        costos.innerHTML = `<b>¿Estás dispuesto a afrontar los costos de mantener en buen estado la salud de la mascota?: </b>${adopcion.Costos}`;
+        costos.className = "card__title"
+
+        let adaptacion = document.createElement("p");
+        adaptacion.innerHTML = `<b>¿Estás dispuesto a darle el tiempo necesario a la mascota para su adaptación?: </b>${adopcion.Adaptacion}`;
+        adaptacion.className = "card__title"
+
+        let compatibilidad = document.createElement("p");
+        compatibilidad.innerHTML = `<b>¿Consideras que la mascota es compatible con tu vida familiar y laboral actual y/o futura?: </b>${adopcion.Compatibilidad}`;
+        compatibilidad.className = "card__title"
+
+        let regaloMascota = document.createElement("p");
+        regaloMascota.innerHTML = `<b>¿Alguna vez debiste regalar una mascota?: </b>${adopcion.regaloMascota}`;
+        regaloMascota.className = "card__title"
+
+        
         divCard.append(nombreAnimal);
         divCard.append(nombre);
         divCard.append(edad);
@@ -82,24 +109,29 @@ function parse_data(adopciones) {
         divCard.append(localidad);
         divCard.append(motivo);
         divCard.append(tipoVivienda);
+        divCard.append(exteriores);
+        divCard.append(consenso);
+        divCard.append(alergias);
+        divCard.append(costos);
+        divCard.append(adaptacion);
+        divCard.append(compatibilidad);
+        divCard.append(regaloMascota);
 
-        pExit.append(iExit);
-        divCard.append(pExit);
+        aExit.append(iExit);
+        divCard.append(aExit);
         
 
-        // Append the card to the adoption requests container
+        
         adoptionRequestDiv.append(divCard);
     }
 }
 
 
-// Function to handle errors in the request
 function request_error(error) {
     console.log("Error:", error);
 }
 
 
-// Fetch adoption requests from the server
 fetch('http://localhost:5000/adopciones')
     .then(response_received)
     .then(parse_data)
@@ -120,9 +152,10 @@ function borrar_adopcion(event, idAdopcion) {
         .then(response => response.json())
         .then(data => {
             console.log("Eliminacion realizada con exito")
+            event.target.closest(".card").remove();
         })
         .catch(error => {
-            console.error(`Error al borrar la solicitud de adopcion ${id}:`, error);
+            console.error(`Error al borrar la solicitud de adopcion ${idAdopcion}:`, error);
             alert('Error al intentar eliminar la solicitud de adopcion. Inténtalo de nuevo más tarde.');
         });
 }
