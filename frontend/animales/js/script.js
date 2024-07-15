@@ -53,11 +53,19 @@ function parse_data(animales) {
             }
         })
 
+        let adoptionRequests = document.createElement("a");
+        adoptionRequests.innerHTML = "Solicitudes de adopción";
+        adoptionRequests.href = "../adopcion/adoptionRequests.html";
+        adoptionRequests.className = "adoptionRequests";
+
         selectTipo.append(optionInicio);
         selectTipo.append(optionTodos);
         divOpciones.append(aAgregar);
         divOpciones.append(selectTipo);
+        divOpciones.append(adoptionRequests);
         secAnimales.append(divOpciones);
+
+        
     }
     else if (user == "usuario") {
         stylesheet.href = "./css/styleUsuario.css";
