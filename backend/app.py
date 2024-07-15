@@ -9,7 +9,7 @@ app = Flask(__name__)
 CORS(app)
 port = 5000
 #Configuracion para la base de datos: HuellitasBA
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://vicksdb:1234@localhost:5432/HuellitasBA'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://maryalejandra:magrSQL@localhost:5432/HuellitasBA'
 
 migrate = Migrate(app, db)
 
