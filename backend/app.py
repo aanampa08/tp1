@@ -9,7 +9,7 @@ app = Flask(__name__)
 CORS(app)
 port = 5000
 #Configuracion para la base de datos: HuellitasBA
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://maryalejandra:magrSQL@localhost:5432/HuellitasBA'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://vicksdb:1234@localhost:5432/HuellitasBA'
 
 migrate = Migrate(app, db)
 
@@ -305,6 +305,47 @@ def nuevoUsuario():
     except Exception as error:
         return jsonify({'message': f'Internal Server Error: {error}'}), 500
 
+@app.route('/login', methods=["POST"])
+def login():
+    try:
+        usuarioLoggeado = request.json
+        nombreUsuario = usuarioLoggeado.get('nombreUsuario')
+        contraseña = usuarioLoggeado.get('contraseña')
+
+
+        usuario = Usuario.query.filter_by(nombreUsuario = nombreUsuario, Contraseña = contraseña).first()
+        if usuario:
+            return jsonify({
+                'message': 'Login realizado con éxito',
+            }), 200
+        else:
+            return jsonify({
+                'message': 'Usuario o contraseña incorrectos'
+            }), 401
+
+    except Exception as error:
+        return jsonify({
+            'message': f'Internal Server Error: {error}'
+        }), 500
+
+@app.route('/usuarios/<username>', methods = ["GET"])
+def obtenerUsuario(username):
+    try:
+        usuario = Usuario.query.filter_by(nombreUsuario=username).first()
+        
+        datosUsuario = {
+            'id': usuario.idUsuario,
+            'Nombre': usuario.Nombre,
+            'Username': usuario.nombreUsuario,
+            'Contraseña': usuario.Contraseña,
+            'Email': usuario.Email,
+            'Telefono': usuario.Telefono,
+        }
+
+        return jsonify({'Usuario': datosUsuario})
+    except Exception as error:
+        return jsonify({'message': f'Internal Server Error: {error}'}), 500
+
 @app.route('/usuarios/<idUsuario>', methods = ["PUT"])
 def editarUsuario(idUsuario):
     try:
@@ -337,6 +378,79 @@ def editarUsuario(idUsuario):
 
         return jsonify({'Usuario': datosUsuario})
     except Exception as error:
+        return jsonify({'message': f'Internal Server Error: {error}'}), 500
+    
+@app.route('/adopciones', methods=["POST"])
+def nuevaAdopcion():
+    try:
+        adopcionNueva = request.json
+
+        animal_id = adopcionNueva['animalID']
+        username = adopcionNueva['username'] 
+        nombre = adopcionNueva['nombre']
+        edad = adopcionNueva['edad']
+        profesion = adopcionNueva['profesion']
+        telefono = adopcionNueva['telefono']
+        email = adopcionNueva['email']
+        direccion = adopcionNueva['direccion']
+        localidad = adopcionNueva['localidad']
+        motivo = adopcionNueva['motivo']
+        tipoVivienda = adopcionNueva['tipoVivienda']
+        exteriores = adopcionNueva['exteriores']
+        consenso = adopcionNueva['consenso']
+        alergias = adopcionNueva['alergias']
+        costos = adopcionNueva['costos']
+        adaptacion = adopcionNueva['adaptacion']
+        compatibilidad = adopcionNueva['compatibilidad']
+        regaloMascota = adopcionNueva['regaloMascota']
+        
+        infoUsuario = Usuario.query.filter_by(nombreUsuario=username).first()
+
+        nueva_adopcion = Adopcion(
+            usuarioID = infoUsuario.idUsuario,
+            animalID = animal_id,
+            Nombre = nombre,
+            Edad = edad,
+            Profesion = profesion,
+            Telefono = telefono,
+            Email = email,
+            Direccion = direccion,
+            Localidad = localidad,
+            Motivo=motivo,
+            tipoVivienda = tipoVivienda,
+            Exteriores = exteriores,
+            Consenso = consenso,
+            Alergias = alergias,
+            Costos = costos,
+            Adaptacion = adaptacion,
+            Compatibilidad = compatibilidad,
+            regaloMascota = regaloMascota
+        )
+        db.session.add(nueva_adopcion)
+        db.session.commit()
+
+        return jsonify({
+            'Usuario' : username,
+            'Animal ID' : animal_id,
+            'Nombre' : nombre,
+            'Edad' : edad,
+            'Profesion' : profesion,
+            'Telefono' : telefono,
+            'Email' : email,
+            'Direccion' : direccion,
+            'Localidad' : localidad,
+            'Motivo' : motivo,
+            'tipoVivienda' : tipoVivienda,
+            'Exteriores' : exteriores,
+            'Consenso' : consenso,
+            'Alergias' : alergias,
+            'Costos' : costos,
+            'Adaptacion' : adaptacion,
+            'Compatibilidad' : compatibilidad,
+            'regaloMascota' : regaloMascota
+        }), 201
+    except Exception as error:
+        print(error)
         return jsonify({'message': f'Internal Server Error: {error}'}), 500
 
 # ------------------------- Programa principal -------------------
