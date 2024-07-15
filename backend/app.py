@@ -487,6 +487,19 @@ def obtenerAdopciones():
         return jsonify({'adopciones': adopcionesListado})
     except Exception as error:
         return jsonify({'message': f'Internal Server Error: {error}'}), 500
+    
+@app.route('/adopcion/<idAdopcion>', methods = ["DELETE"])
+def eliminarAdopcionRequest(idAdopcion):
+    try:
+        adopcion = Adopcion.query.get(idAdopcion)
+
+        db.session.delete(adopcion)
+        db.session.commit()
+        
+        return jsonify({'message': f'Adopcion {idAdopcion} eliminado correctamente'})
+    except Exception as error:
+        return jsonify({'message': f'Internal Server Error: {error}'}), 500
+
 
 # ------------------------- Programa principal -------------------
 if __name__ == '__main__':
