@@ -16,58 +16,53 @@
     </header>
 
     <div class="wrapper">
-        <form id="formLogIn">
+        <form id="formAdopcion">
             <h1 id="adoptarNombre">¡Adoptá!</h1>
             <div class="content">
 
                 <div class="input-box">
                     <label for="name">Nombre completo</label>
-                    <input type="text" name="name" placeholder="Tu nombre" required>
+                    <input id="name" type="text" name="name" placeholder="Tu nombre" required>
                 </div>
 
                 <div class="input-box">
                     <label for="age">Edad</label>
-                    <input class="required" type="number" name="age" placeholder="18+" min="18" max="65">
-                </div>
-
-                <div class="input-box">
-                    <label for="work">Profesión</label>
-                    <input type="text" name="work" placeholder="Soy..." required>
+                    <input id="age" class="required" type="number" name="age" placeholder="18+" min="18" max="65">
                 </div>
 
                 <div class="input-box">
                     <label for="phone">Número de teléfono</label>
-                    <input type="tel" name="phone" placeholder="12345678" required>
+                    <input id="phone" type="tel" name="phone" placeholder="12345678" required>
                 </div>
 
                 <div class="input-box">
                     <label for="email">Mail</label>
-                    <input type="email" name="email" placeholder="ejemplo@1234.com" required>
+                    <input id="email" type="email" name="email" placeholder="ejemplo@1234.com" required>
                 </div>
 
                 <div class="input-box">
-                    <label for="password">Contraseña</label>
-                    <input type="password" name="password" placeholder="123456789" required>
+                    <label for="work">Profesión</label>
+                    <input id="work" type="text" name="work" placeholder="Soy..." required>
                 </div>
 
                 <div class="input-box">
                     <label for="address">Direccion</label>
-                    <input type="text" name="address" placeholder="Av. ..." required>
+                    <input id="address" type="text" name="address" placeholder="Av. ..." required>
                 </div>
 
                 <div class="input-box">
                     <label for="locality">Localidad</label>
-                    <input type="text" name="locality" placeholder="" required>
+                    <input id="locality" type="text" name="locality" placeholder="" required>
                 </div>
 
                 <div class="input-box">
-                    <label id="adoptionReason" for="adoptionReason">¿Por qué motivo querés adoptar un perro/gato?</label>
-                    <input type="text" name="adoptionReason" placeholder="" required>
+                    <label id="adoptionReasonLabel" for="adoptionReason">¿Por qué motivo querés adoptar un perro/gato?</label>
+                    <input id="adoptionReason" type="text" name="adoptionReason" placeholder="" required>
                 </div>                
 
                 <div class="input-box">
                     <label for="pastExperience">¿Alguna vez debiste regalar a un animal tuyo? Si es así, ¿por qué?</label>
-                    <input type="text" name="pastExperience" placeholder="" required>
+                    <input id="pastExperience" type="text" name="pastExperience" placeholder="" required>
                 </div>
 
                 <div class="selects">
@@ -95,7 +90,7 @@
                 </div>
 
                 <div class="selects">
-                    <label id="allergies" for="allergies">¿Alguien en la familia tiene alergia a los perros/gatos?</label>
+                    <label id="allergiesLabel" for="allergies">¿Alguien en la familia tiene alergia a los perros/gatos?</label>
                     <select name="allergies" id="allergies" required>
                         <option value="si">Sí</option>
                         <option value="no">No</option>
@@ -103,7 +98,7 @@
                 </div>
 
                 <div class="selects">
-                    <label id="financialCommitment" for="financialCommitment">¿Estás dispuesto a afrontar los costos de mantener en buen estado la salud del perro/gato?</label>
+                    <label id="financialCommitmentLabel" for="financialCommitment">¿Estás dispuesto a afrontar los costos de mantener en buen estado la salud del perro/gato?</label>
                     <select name="financialCommitment" id="financialCommitment" required>
                         <option value="si">Sí</option>
                         <option value="no">No</option>
@@ -111,7 +106,7 @@
                 </div>
 
                 <div class="selects">
-                    <label id="timeCommitment" for="timeCommitment">¿Estás dispuesto a darle el tiempo necesario al perro/gato para su adaptación?</label>
+                    <label id="timeCommitmentLabel"  for="timeCommitment">¿Estás dispuesto a darle el tiempo necesario al perro/gato para su adaptación?</label>
                     <select name="timeCommitment" id="timeCommitment" required>
                         <option value="si">Sí</option>
                         <option value="no">No</option>
@@ -119,15 +114,15 @@
                 </div>
 
                 <div class="selects">
-                    <label id="compatibility" for="compatibility">¿Consideras que el perro/gato es compatible con tu vida familiar y laboral actual y/o futura?</label>
+                    <label id="compatibilityLabel" for="compatibility">¿Consideras que el perro/gato es compatible con tu vida familiar y laboral actual y/o futura?</label>
                     <select name="compatibility" id="compatibility" required>
-                        <option value="si">Sí</option>
+                        <option value="si" >Sí</option>
                         <option value="no">No</option>
                     </select>
                 </div>
 
                 <div class="button-container">
-                    <button type="submit">Registrarse</button>
+                    <button id="btnEnviar" type="submit">Enviar solicitud de adopcion</button>
                 </div>
             </div>
         </form>

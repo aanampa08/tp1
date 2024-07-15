@@ -40,6 +40,6 @@ document.getElementById('formLogIn').addEventListener('submit', function (event)
         })
         .catch(error => {
             console.error('Error:', error);
-            alert('Hubo un error al iniciar sesion. Intente nuevamente');
+            alert('Usuario o contraseña incorrecta');
         });
 });
