@@ -452,6 +452,41 @@ def nuevaAdopcion():
     except Exception as error:
         print(error)
         return jsonify({'message': f'Internal Server Error: {error}'}), 500
+    
+@app.route('/adopciones')
+def obtenerAdopciones():
+    try:
+        adopciones = Adopcion.query.all()
+        adopcionesListado = []
+        for adopcion in adopciones:
+            animal = Animal.query.where(Animal.idAnimal == adopcion.animalID).first()
+            #Ordeno la informacion para mostrar en la API
+            datoAdopcion = {
+                'id': adopcion.idAdopcion,
+                'Animal':animal.Nombre,
+                'Nombre': adopcion.Nombre,
+                'Edad' : adopcion.Edad,
+                'Profesion' : adopcion.Profesion,
+                'Telefono' : adopcion.Telefono,
+                'Email' : adopcion.Email,
+                'Direccion' : adopcion.Direccion,
+                'Localidad' : adopcion.Localidad,
+                'Motivo' : adopcion.Motivo,
+                'tipoVivienda' : adopcion.tipoVivienda,
+                'Exteriores' : adopcion.Exteriores,
+                'Consenso' : adopcion.Consenso,
+                'Alergias' : adopcion.Alergias,
+                'Costos' : adopcion.Costos,
+                'Adaptacion' : adopcion.Adaptacion,
+                'Compatibilidad' : adopcion.Compatibilidad,
+                'regaloMascota' : adopcion.regaloMascota
+            }
+            #Guardamos cada adopcion en el listado
+            adopcionesListado.append(datoAdopcion)
+        #Retornamos el json con los adopciones cargados
+        return jsonify({'adopciones': adopcionesListado})
+    except Exception as error:
+        return jsonify({'message': f'Internal Server Error: {error}'}), 500
 
 # ------------------------- Programa principal -------------------
 if __name__ == '__main__':
